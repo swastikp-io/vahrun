@@ -4,10 +4,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Play,
-  Pause,
   SkipBack,
   SkipForward,
-  Volume2,
   Disc,
   ExternalLink,
   Music,
@@ -27,7 +25,7 @@ export function AudioPlayerWindow({
   onClose,
   onFocus,
 }: AudioPlayerWindowProps) {
-  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [isPlaying] = useState<boolean>(true);
   const [progress, setProgress] = useState<number>(24);
 
   useEffect(() => {

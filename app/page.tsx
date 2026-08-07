@@ -160,18 +160,6 @@ export default function Home() {
     setWindows((prev) => prev.filter((w) => w.id !== id));
   };
 
-  // Add new folder on context menu request
-  const handleCreateNewFolder = () => {
-    const newFolder: DesktopIconItem = {
-      id: `folder-${Date.now()}`,
-      label: "Untitled Folder",
-      type: "folder",
-      defaultPosition: { top: "45%", left: "45%" },
-      targetFolder: "documents",
-    };
-    setIconsList((prev) => [...prev, newFolder]);
-  };
-
   return (
     <div
       onClick={handleDesktopClick}
