@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 import { DESKTOP_ICONS, DesktopIconItem } from "@/data/desktopIcons";
 import {
   TRACKS,
@@ -36,39 +37,84 @@ export default function Home() {
     useState<boolean>(false);
   const [iconsList, setIconsList] = useState<DesktopIconItem[]>(DESKTOP_ICONS);
 
-  // Always play wewerehere.mp3 automatically when website opens (continuous loop, no pause option)
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
+  const [isAudioMuted, setIsAudioMuted] = useState<boolean>(false);
+
+  // Background audio setup with mobile browser (iOS Safari / Android Chrome) touch unlock & autoplay handling
   useEffect(() => {
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-    const audio = new Audio(`${basePath}/wewerehere.mp3`);
-    audio.loop = true;
+    const audio = audioRef.current;
+    if (!audio) return;
+
     audio.volume = 0.85;
 
-    const playAudio = () => {
-      audio.play().catch(() => {
-        // Autoplay policy fallback: trigger playback on first user interaction
-      });
+    const attemptPlay = async () => {
+      if (!audio) return;
+      try {
+        await audio.play();
+        setIsAudioPlaying(true);
+      } catch {
+        setIsAudioPlaying(false);
+      }
     };
 
-    playAudio();
+    attemptPlay();
 
-    const handleFirstInteraction = () => {
-      audio.play().catch(() => {});
-      window.removeEventListener("click", handleFirstInteraction);
-      window.removeEventListener("keydown", handleFirstInteraction);
-      window.removeEventListener("touchstart", handleFirstInteraction);
+    const handleInteraction = () => {
+      if (audio.paused && !isAudioMuted) {
+        attemptPlay();
+      }
     };
 
-    window.addEventListener("click", handleFirstInteraction);
-    window.addEventListener("keydown", handleFirstInteraction);
-    window.addEventListener("touchstart", handleFirstInteraction);
+    const events = [
+      "click",
+      "touchstart",
+      "touchend",
+      "pointerdown",
+      "keydown",
+      "scroll",
+    ];
+
+    events.forEach((evt) => {
+      window.addEventListener(evt, handleInteraction, { passive: true });
+    });
+
+    const handleVisibilityChange = () => {
+      if (!document.hidden && !isAudioMuted && audio.paused) {
+        attemptPlay();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      window.removeEventListener("click", handleFirstInteraction);
-      window.removeEventListener("keydown", handleFirstInteraction);
-      window.removeEventListener("touchstart", handleFirstInteraction);
-      audio.pause();
+      events.forEach((evt) => {
+        window.removeEventListener(evt, handleInteraction);
+      });
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, []);
+  }, [isAudioMuted]);
+
+  const toggleAudio = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (audio.paused) {
+      audio
+        .play()
+        .then(() => {
+          setIsAudioPlaying(true);
+          setIsAudioMuted(false);
+          audio.muted = false;
+        })
+        .catch(() => {});
+    } else {
+      audio.pause();
+      setIsAudioPlaying(false);
+      setIsAudioMuted(true);
+    }
+  };
 
   // Keyboard shortcut listener (Escape to deselect)
   useEffect(() => {
@@ -369,6 +415,38 @@ export default function Home() {
         isOpen={isControlCenterOpen}
         onClose={() => setIsControlCenterOpen(false)}
       />
+
+      {/* Hidden HTML Audio Tag for wewerehere.mp3 with Mobile Support */}
+      <audio
+        ref={audioRef}
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/wewerehere.mp3`}
+        loop
+        playsInline
+        preload="auto"
+      />
+
+      {/* Floating Audio Control Indicator for Mobile & Desktop */}
+      <button
+        onClick={toggleAudio}
+        className="fixed bottom-12 right-4 sm:bottom-5 sm:right-5 z-40 flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/80 hover:bg-slate-800/90 text-white/90 backdrop-blur-md border border-white/20 shadow-xl text-xs font-medium transition-all active:scale-95 select-none cursor-pointer"
+        title={isAudioPlaying ? "Mute background audio" : "Play background audio"}
+      >
+        {isAudioPlaying ? (
+          <>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="hidden xs:inline text-[11px] font-mono">wewerehere.mp3</span>
+          </>
+        ) : (
+          <>
+            <VolumeX className="w-3.5 h-3.5 text-amber-400" />
+            <span className="text-[11px] font-mono">Tap for sound</span>
+          </>
+        )}
+      </button>
     </div>
   );
 }
