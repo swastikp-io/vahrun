@@ -2,7 +2,16 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Wifi, Bluetooth, Airplay, Sun, Volume2, Moon, Music, Disc } from "lucide-react";
+import {
+  Wifi,
+  Bluetooth,
+  Airplay,
+  Sun,
+  Volume2,
+  Moon,
+  Music,
+  Disc,
+} from "lucide-react";
 import { VAHRUN_BIO, TRACKS } from "@/data/portfolioData";
 
 interface ControlCenterProps {
@@ -19,10 +28,7 @@ export function ControlCenter({ isOpen, onClose }: ControlCenterProps) {
 
   return (
     <AnimatePresence>
-      <div
-        className="fixed inset-0 z-50 pointer-events-auto"
-        onClick={onClose}
-      >
+      <div className="fixed inset-0 z-50 pointer-events-auto" onClick={onClose}>
         <motion.div
           initial={{ scale: 0.95, opacity: 0, y: -10 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -41,7 +47,9 @@ export function ControlCenter({ isOpen, onClose }: ControlCenterProps) {
                 </div>
                 <div>
                   <div className="text-xs font-bold leading-none">Wi-Fi</div>
-                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Vahrun Studio</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">
+                    Vahrun Studio
+                  </div>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
@@ -49,8 +57,12 @@ export function ControlCenter({ isOpen, onClose }: ControlCenterProps) {
                   <Bluetooth className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold leading-none">Bluetooth</div>
-                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Audio Interface</div>
+                  <div className="text-xs font-bold leading-none">
+                    Bluetooth
+                  </div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">
+                    Audio Interface
+                  </div>
                 </div>
               </div>
             </div>
@@ -123,7 +135,9 @@ export function ControlCenter({ isOpen, onClose }: ControlCenterProps) {
                 <Disc className="w-4 h-4 text-white animate-spin" />
               </div>
               <div>
-                <div className="text-xs font-bold line-clamp-1">Handling Anti-Performance</div>
+                <div className="text-xs font-bold line-clamp-1">
+                  Handling Anti-Performance
+                </div>
                 <div className="text-[10px] text-blue-100">vahrun</div>
               </div>
             </div>

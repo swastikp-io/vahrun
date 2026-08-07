@@ -73,14 +73,27 @@ export function MacFolderIcon({
       )}
       {badge === "download" && (
         <div className="absolute bottom-1 right-2 bg-blue-600/90 rounded-full p-1 text-white shadow border border-white/40">
-          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-            <path d="M12 5v14M5 12l7 7 7-7" strokeLinecap="round" strokeLinejoin="round" />
+          <svg
+            className="w-3 h-3"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+          >
+            <path
+              d="M12 5v14M5 12l7 7 7-7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </div>
       )}
       {badge === "star" && (
         <div className="absolute inset-0 flex items-center justify-center text-white drop-shadow">
-          <svg className="w-6 h-6 fill-yellow-300 stroke-yellow-500" viewBox="0 0 24 24">
+          <svg
+            className="w-6 h-6 fill-yellow-300 stroke-yellow-500"
+            viewBox="0 0 24 24"
+          >
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
           </svg>
         </div>
@@ -130,9 +143,33 @@ export function MacDocIcon({
               TXT
             </text>
             {/* Document Text Lines */}
-            <line x1="10" y1="42" x2="40" y2="42" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
-            <line x1="10" y1="48" x2="36" y2="48" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" />
-            <line x1="10" y1="54" x2="28" y2="54" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" />
+            <line
+              x1="10"
+              y1="42"
+              x2="40"
+              y2="42"
+              stroke="#F59E0B"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <line
+              x1="10"
+              y1="48"
+              x2="36"
+              y2="48"
+              stroke="#94A3B8"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <line
+              x1="10"
+              y1="54"
+              x2="28"
+              y2="54"
+              stroke="#CBD5E1"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
           </>
         ) : type === "docx" ? (
           <>
@@ -149,9 +186,33 @@ export function MacDocIcon({
               W
             </text>
             {/* Fake document lines */}
-            <line x1="10" y1="42" x2="40" y2="42" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" />
-            <line x1="10" y1="48" x2="34" y2="48" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" />
-            <line x1="10" y1="54" x2="28" y2="54" stroke="#E2E8F0" strokeWidth="2" strokeLinecap="round" />
+            <line
+              x1="10"
+              y1="42"
+              x2="40"
+              y2="42"
+              stroke="#94A3B8"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <line
+              x1="10"
+              y1="48"
+              x2="34"
+              y2="48"
+              stroke="#CBD5E1"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <line
+              x1="10"
+              y1="54"
+              x2="28"
+              y2="54"
+              stroke="#E2E8F0"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
           </>
         ) : (
           <>
@@ -169,8 +230,24 @@ export function MacDocIcon({
             </text>
             {/* Fake PPT presentation lines */}
             <rect x="10" y="42" width="14" height="12" rx="1" fill="#FED7AA" />
-            <line x1="28" y1="44" x2="40" y2="44" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" />
-            <line x1="28" y1="50" x2="36" y2="50" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" />
+            <line
+              x1="28"
+              y1="44"
+              x2="40"
+              y2="44"
+              stroke="#94A3B8"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <line
+              x1="28"
+              y1="50"
+              x2="36"
+              y2="50"
+              stroke="#CBD5E1"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
           </>
         )}
       </svg>
@@ -178,7 +255,11 @@ export function MacDocIcon({
   );
 }
 
-export function MacAudioIcon({ className = "w-14 h-16" }: { className?: string }) {
+export function MacAudioIcon({
+  className = "w-14 h-16",
+}: {
+  className?: string;
+}) {
   return (
     <div className={`relative flex items-center justify-center ${className}`}>
       <svg
@@ -216,7 +297,11 @@ export function MacAudioIcon({ className = "w-14 h-16" }: { className?: string }
   );
 }
 
-export function MacZipIcon({ className = "w-14 h-16" }: { className?: string }) {
+export function MacZipIcon({
+  className = "w-14 h-16",
+}: {
+  className?: string;
+}) {
   return (
     <div className={`relative flex items-center justify-center ${className}`}>
       <svg
@@ -242,7 +327,14 @@ export function MacZipIcon({ className = "w-14 h-16" }: { className?: string }) 
         {/* Zipper pull */}
         <rect x="20" y="38" width="10" height="12" rx="2" fill="#475569" />
         <circle cx="25" cy="44" r="2" fill="#E2E8F0" />
-        <text x="25" y="58" fontSize="8" fontWeight="bold" fill="#475569" textAnchor="middle">
+        <text
+          x="25"
+          y="58"
+          fontSize="8"
+          fontWeight="bold"
+          fill="#475569"
+          textAnchor="middle"
+        >
           ZIP
         </text>
       </svg>
@@ -250,16 +342,21 @@ export function MacZipIcon({ className = "w-14 h-16" }: { className?: string }) 
   );
 }
 
-export function MacShortcutsIcon({ className = "w-14 h-14" }: { className?: string }) {
+export function MacShortcutsIcon({
+  className = "w-14 h-14",
+}: {
+  className?: string;
+}) {
   return (
     <div className={`relative flex items-center justify-center ${className}`}>
       <div className="w-full h-full bg-gradient-to-br from-cyan-400 via-blue-600 to-pink-500 rounded-2xl p-2 shadow-lg flex items-center justify-center border border-white/20">
-        <svg className="w-9 h-9 text-white drop-shadow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path
-            d="M12 3v18M3 12h18"
-            strokeWidth="3"
-            strokeLinecap="round"
-          />
+        <svg
+          className="w-9 h-9 text-white drop-shadow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
+          <path d="M12 3v18M3 12h18" strokeWidth="3" strokeLinecap="round" />
           <path
             d="M16 8l4 4-4 4M8 16l-4-4 4-4"
             strokeWidth="2.5"
@@ -272,7 +369,11 @@ export function MacShortcutsIcon({ className = "w-14 h-14" }: { className?: stri
   );
 }
 
-export function MacAfterEffectsIcon({ className = "w-14 h-14" }: { className?: string }) {
+export function MacAfterEffectsIcon({
+  className = "w-14 h-14",
+}: {
+  className?: string;
+}) {
   return (
     <div className={`relative flex items-center justify-center ${className}`}>
       <div className="w-full h-full bg-[#00005b] rounded-xl border-2 border-[#9999ff] p-1.5 flex items-center justify-center shadow-lg">
@@ -284,12 +385,27 @@ export function MacAfterEffectsIcon({ className = "w-14 h-14" }: { className?: s
   );
 }
 
-export function MacIronPalaceIcon({ className = "w-14 h-14" }: { className?: string }) {
+export function MacIronPalaceIcon({
+  className = "w-14 h-14",
+}: {
+  className?: string;
+}) {
   return (
     <div className={`relative flex items-center justify-center ${className}`}>
       <div className="w-full h-full bg-gradient-to-tr from-cyan-800 to-sky-500 rounded-xl p-1 shadow-md border border-white/30 flex flex-col items-center justify-center">
-        <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <svg
+          className="w-8 h-8 text-white"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
         </svg>
       </div>
     </div>
@@ -309,10 +425,18 @@ export function MacImageThumbnail({
     <div className={`relative group cursor-pointer ${className}`}>
       {/* Outer border mimicking macOS photo thumbnail */}
       <div className="w-full h-full p-1 bg-white/90 dark:bg-slate-800/90 rounded-md shadow-md border border-slate-300/80 dark:border-slate-700/80 flex flex-col overflow-hidden">
-        <div className={`w-full h-full rounded bg-gradient-to-br ${gradient} flex items-center justify-center relative overflow-hidden`}>
+        <div
+          className={`w-full h-full rounded bg-gradient-to-br ${gradient} flex items-center justify-center relative overflow-hidden`}
+        >
           {/* Subtle grid/image texture effect */}
           <div className="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:8px_8px] opacity-20" />
-          <svg className="w-6 h-6 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <svg
+            className="w-6 h-6 text-white/70"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
             <circle cx="8.5" cy="8.5" r="1.5" />
             <polyline points="21 15 16 10 5 21" />
@@ -339,7 +463,10 @@ export function MacVideoThumbnail({
         </div>
         <div className="w-full flex-1 bg-gradient-to-tr from-purple-900 via-indigo-950 to-slate-950 flex items-center justify-center relative">
           <div className="w-6 h-6 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center">
-            <svg className="w-3.5 h-3.5 text-white fill-white ml-0.5" viewBox="0 0 24 24">
+            <svg
+              className="w-3.5 h-3.5 text-white fill-white ml-0.5"
+              viewBox="0 0 24 24"
+            >
               <polygon points="5 3 19 12 5 21 5 3" />
             </svg>
           </div>

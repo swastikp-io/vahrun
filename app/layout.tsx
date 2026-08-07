@@ -19,8 +19,16 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "vahrun | music producer from lucknow",
-  description: "vahrun — music producer from lucknow crafting soundscapes that blend emotion, texture, and storytelling. Spotify, Apple Music & YouTube.",
-  keywords: ["vahrun", "music producer", "lucknow", "soundscapes", "video editing", "graphic design"],
+  description:
+    "vahrun — music producer from lucknow crafting soundscapes that blend emotion, texture, and storytelling. Spotify, Apple Music & YouTube.",
+  keywords: [
+    "vahrun",
+    "music producer",
+    "lucknow",
+    "soundscapes",
+    "video editing",
+    "graphic design",
+  ],
 };
 
 export default function RootLayout({
@@ -33,8 +41,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col overflow-hidden">{children}</body>
+      <body className="min-h-full flex flex-col overflow-hidden">
+        {children}
+      </body>
     </html>
   );
 }
-

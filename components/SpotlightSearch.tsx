@@ -2,7 +2,15 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Folder, Music, FileText, Image as ImageIcon, Sparkles, ArrowRight } from "lucide-react";
+import {
+  Search,
+  Folder,
+  Music,
+  FileText,
+  Image as ImageIcon,
+  Sparkles,
+  ArrowRight,
+} from "lucide-react";
 import { TRACKS, GALLERY_ITEMS } from "@/data/portfolioData";
 import { DESKTOP_ICONS, DesktopIconItem } from "@/data/desktopIcons";
 
@@ -36,7 +44,7 @@ export function SpotlightSearch({
   if (!isOpen) return null;
 
   const filteredIcons = DESKTOP_ICONS.filter((icon) =>
-    icon.label.toLowerCase().includes(query.toLowerCase())
+    icon.label.toLowerCase().includes(query.toLowerCase()),
   );
 
   return (
@@ -100,7 +108,8 @@ export function SpotlightSearch({
               ))
             ) : (
               <div className="p-8 text-center text-slate-400 text-sm">
-                No matching desktop files or tracks found for &quot;{query}&quot;
+                No matching desktop files or tracks found for &quot;{query}
+                &quot;
               </div>
             )}
           </div>

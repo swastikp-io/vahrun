@@ -2,7 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Play, Pause, SkipBack, SkipForward, Volume2, Disc, ExternalLink, Music } from "lucide-react";
+import {
+  Play,
+  Pause,
+  SkipBack,
+  SkipForward,
+  Volume2,
+  Disc,
+  ExternalLink,
+  Music,
+} from "lucide-react";
 import { Track, VAHRUN_BIO } from "@/data/portfolioData";
 
 interface AudioPlayerWindowProps {
@@ -91,22 +100,25 @@ export function AudioPlayerWindow({
 
         {/* Audio Spectrum Visualizer */}
         <div className="w-full h-8 flex items-end justify-center space-x-1 px-4">
-          {[40, 70, 30, 90, 50, 80, 100, 60, 30, 85, 45, 95, 60, 80, 40, 70, 90, 50].map(
-            (height, idx) => (
-              <motion.div
-                key={idx}
-                animate={{
-                  height: isPlaying ? [`${height * 0.3}%`, `${height}%`, `${height * 0.4}%`] : "20%",
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 0.6 + (idx % 4) * 0.1,
-                  ease: "easeInOut",
-                }}
-                className="w-1.5 bg-gradient-to-t from-blue-500 to-indigo-400 rounded-full"
-              />
-            )
-          )}
+          {[
+            40, 70, 30, 90, 50, 80, 100, 60, 30, 85, 45, 95, 60, 80, 40, 70, 90,
+            50,
+          ].map((height, idx) => (
+            <motion.div
+              key={idx}
+              animate={{
+                height: isPlaying
+                  ? [`${height * 0.3}%`, `${height}%`, `${height * 0.4}%`]
+                  : "20%",
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 0.6 + (idx % 4) * 0.1,
+                ease: "easeInOut",
+              }}
+              className="w-1.5 bg-gradient-to-t from-blue-500 to-indigo-400 rounded-full"
+            />
+          ))}
         </div>
 
         {/* Scrubber Progress Bar */}

@@ -2,7 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import { DESKTOP_ICONS, DesktopIconItem } from "@/data/desktopIcons";
-import { TRACKS, GALLERY_ITEMS, Track, GalleryItem } from "@/data/portfolioData";
+import {
+  TRACKS,
+  GALLERY_ITEMS,
+  Track,
+  GalleryItem,
+} from "@/data/portfolioData";
 import { DesktopIcon } from "@/components/DesktopIcon";
 import { FinderWindow } from "@/components/FinderWindow";
 import { AudioPlayerWindow } from "@/components/AudioPlayerWindow";
@@ -23,10 +28,12 @@ export default function Home() {
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [activeZIndex, setActiveZIndex] = useState<number>(100);
   const [activeAudioTrack, setActiveAudioTrack] = useState<Track | null>(null);
-  const [activeQuickLookItem, setActiveQuickLookItem] = useState<GalleryItem | null>(null);
+  const [activeQuickLookItem, setActiveQuickLookItem] =
+    useState<GalleryItem | null>(null);
   const [isAboutMeNoteOpen, setIsAboutMeNoteOpen] = useState<boolean>(false);
   const [isSpotlightOpen, setIsSpotlightOpen] = useState<boolean>(false);
-  const [isControlCenterOpen, setIsControlCenterOpen] = useState<boolean>(false);
+  const [isControlCenterOpen, setIsControlCenterOpen] =
+    useState<boolean>(false);
   const [iconsList, setIconsList] = useState<DesktopIconItem[]>(DESKTOP_ICONS);
 
   // Always play wewerehere.mp3 automatically when website opens (continuous loop, no pause option)
@@ -87,7 +94,7 @@ export default function Home() {
 
     if (existing) {
       setWindows((prev) =>
-        prev.map((w) => (w.folderId === folderId ? { ...w, zIndex: newZ } : w))
+        prev.map((w) => (w.folderId === folderId ? { ...w, zIndex: newZ } : w)),
       );
     } else {
       const windowTitle = title || folderId.replace("-", " ");
@@ -108,12 +115,18 @@ export default function Home() {
       icon.label.toLowerCase().includes("about")
     ) {
       setIsAboutMeNoteOpen(true);
-    } else if (icon.type === "folder" || icon.type === "app" || icon.type === "shortcut") {
+    } else if (
+      icon.type === "folder" ||
+      icon.type === "app" ||
+      icon.type === "shortcut"
+    ) {
       openFolderWindow(icon.targetFolder || "documents", icon.label);
     } else if (icon.type === "audio") {
       setActiveAudioTrack(TRACKS[0]);
     } else if (icon.type === "image") {
-      const matchedGallery = GALLERY_ITEMS.find((g) => g.title === icon.label) || {
+      const matchedGallery = GALLERY_ITEMS.find(
+        (g) => g.title === icon.label,
+      ) || {
         id: icon.id,
         title: icon.label || "Visual Asset",
         category: "Visual Design",
@@ -138,7 +151,7 @@ export default function Home() {
     const newZ = activeZIndex + 1;
     setActiveZIndex(newZ);
     setWindows((prev) =>
-      prev.map((w) => (w.id === id ? { ...w, zIndex: newZ } : w))
+      prev.map((w) => (w.id === id ? { ...w, zIndex: newZ } : w)),
     );
   };
 
@@ -180,7 +193,10 @@ export default function Home() {
         {/* Vahrun Bio Text Overlay (Responsive layout for Mobile, Tablet, Desktop) */}
         <div
           className="absolute top-[28%] xs:top-[31%] sm:top-[34%] left-[4%] sm:left-[4.5%] z-10 select-text text-white leading-[1.55] sm:leading-[1.6] space-y-3.5 sm:space-y-5 text-[13px] xs:text-[14px] sm:text-[15px] md:text-[16px] font-normal tracking-normal drop-shadow-[0_1.5px_4px_rgba(0,0,0,0.95)] max-w-[88vw] xs:max-w-[400px] sm:max-w-[460px] md:max-w-[500px]"
-          style={{ fontFamily: 'var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif' }}
+          style={{
+            fontFamily:
+              'var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif',
+          }}
         >
           {/* Block 1 */}
           <p>Hi, my name is Vahrun.</p>
@@ -243,7 +259,10 @@ export default function Home() {
         {/* Right Side Tile Floating Social Links (Responsive for Mobile, Tablet & Desktop) */}
         <div
           className="select-text z-20"
-          style={{ fontFamily: 'var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif' }}
+          style={{
+            fontFamily:
+              'var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif',
+          }}
         >
           {/* Spotify */}
           <a

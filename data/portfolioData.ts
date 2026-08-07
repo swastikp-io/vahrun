@@ -32,10 +32,12 @@ export const VAHRUN_BIO = {
   name: "vahrun",
   title: "Music Producer & Visual Artist",
   location: "Lucknow, India",
-  description: "Crafting soundscapes that blend emotion, texture, and storytelling.",
+  description:
+    "Crafting soundscapes that blend emotion, texture, and storytelling.",
   tags: ["Music Production", "Sound Design", "Video Editing", "Graphic Design"],
   socials: {
-    spotify: "https://open.spotify.com/artist/2tRx1njcfoGrTaDPPNj5OK?si=212e8765f5914493",
+    spotify:
+      "https://open.spotify.com/artist/2tRx1njcfoGrTaDPPNj5OK?si=212e8765f5914493",
     appleMusic: "https://music.apple.com/us/artist/vahrun/1745512124",
     youtube: "https://www.youtube.com/@whyrunvahrun",
     instagram: "https://www.instagram.com/itsvahrun/",

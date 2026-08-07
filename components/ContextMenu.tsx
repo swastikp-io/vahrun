@@ -1,7 +1,14 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { FolderPlus, RefreshCw, Layers, Sliders, Info, Monitor } from "lucide-react";
+import {
+  FolderPlus,
+  RefreshCw,
+  Layers,
+  Sliders,
+  Info,
+  Monitor,
+} from "lucide-react";
 
 interface ContextMenuProps {
   x: number;

@@ -2,7 +2,14 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, FileText, Music2, Video, Palette, ExternalLink } from "lucide-react";
+import {
+  X,
+  FileText,
+  Music2,
+  Video,
+  Palette,
+  ExternalLink,
+} from "lucide-react";
 
 interface AboutMeNoteModalProps {
   isOpen: boolean;

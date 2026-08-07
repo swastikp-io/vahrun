@@ -29,7 +29,13 @@ import {
   GalleryItem,
   VideoProject,
 } from "@/data/portfolioData";
-import { MacFolderIcon, MacDocIcon, MacAudioIcon, MacImageThumbnail, MacVideoThumbnail } from "./MacIcons";
+import {
+  MacFolderIcon,
+  MacDocIcon,
+  MacAudioIcon,
+  MacImageThumbnail,
+  MacVideoThumbnail,
+} from "./MacIcons";
 
 export interface FinderWindowProps {
   id: string;
@@ -157,22 +163,30 @@ export function FinderWindow({
         return (
           <div className="p-4 space-y-3">
             <div className="p-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 rounded-lg text-xs text-amber-900 dark:text-amber-200">
-              <span className="font-semibold">Producer Stem Vault:</span> Downloadable sample loops and analog synthesizer stems crafted by Vahrun.
+              <span className="font-semibold">Producer Stem Vault:</span>{" "}
+              Downloadable sample loops and analog synthesizer stems crafted by
+              Vahrun.
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               <div className="flex flex-col items-center p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
                 <MacAudioIcon className="w-12 h-14 mb-2" />
-                <span className="text-xs font-medium text-center">Lucknow_Bass_140BPM.wav</span>
+                <span className="text-xs font-medium text-center">
+                  Lucknow_Bass_140BPM.wav
+                </span>
                 <span className="text-[10px] text-slate-400">14.2 MB</span>
               </div>
               <div className="flex flex-col items-center p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
                 <MacAudioIcon className="w-12 h-14 mb-2" />
-                <span className="text-xs font-medium text-center">Analog_Drone_Cmin.wav</span>
+                <span className="text-xs font-medium text-center">
+                  Analog_Drone_Cmin.wav
+                </span>
                 <span className="text-[10px] text-slate-400">22.8 MB</span>
               </div>
               <div className="flex flex-col items-center p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
                 <MacDocIcon type="docx" className="w-12 h-14 mb-2" />
-                <span className="text-xs font-medium text-center">Stem_Licensing_Info.docx</span>
+                <span className="text-xs font-medium text-center">
+                  Stem_Licensing_Info.docx
+                </span>
                 <span className="text-[10px] text-slate-400">18 KB</span>
               </div>
             </div>
@@ -212,24 +226,36 @@ export function FinderWindow({
                 className="flex flex-col items-center p-3 rounded-lg border border-amber-200/80 dark:border-slate-800 hover:border-amber-500 hover:shadow-md cursor-pointer transition-all bg-amber-50/50 dark:bg-slate-900"
               >
                 <MacDocIcon type="txt" className="w-12 h-14 mb-2" />
-                <span className="text-xs font-medium text-center">aboutme.txt</span>
-                <span className="text-[10px] text-amber-600 dark:text-amber-400">Notes • Vahrun Bio</span>
+                <span className="text-xs font-medium text-center">
+                  aboutme.txt
+                </span>
+                <span className="text-[10px] text-amber-600 dark:text-amber-400">
+                  Notes • Vahrun Bio
+                </span>
               </div>
               <div
                 onClick={() => setActiveTab("music")}
                 className="flex flex-col items-center p-3 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 hover:shadow-md cursor-pointer transition-all bg-white dark:bg-slate-900"
               >
                 <MacDocIcon type="docx" className="w-12 h-14 mb-2" />
-                <span className="text-xs font-medium text-center">Vahrun_Discography.docx</span>
-                <span className="text-[10px] text-slate-400">Spotify / Apple Music</span>
+                <span className="text-xs font-medium text-center">
+                  Vahrun_Discography.docx
+                </span>
+                <span className="text-[10px] text-slate-400">
+                  Spotify / Apple Music
+                </span>
               </div>
               <div
                 onClick={() => setActiveTab("imovie-projects")}
                 className="flex flex-col items-center p-3 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 hover:shadow-md cursor-pointer transition-all bg-white dark:bg-slate-900"
               >
                 <MacDocIcon type="pptx" className="w-12 h-14 mb-2" />
-                <span className="text-xs font-medium text-center">Video_Editing_Showcase.pptx</span>
-                <span className="text-[10px] text-slate-400">After Effects & Premiere</span>
+                <span className="text-xs font-medium text-center">
+                  Video_Editing_Showcase.pptx
+                </span>
+                <span className="text-[10px] text-slate-400">
+                  After Effects & Premiere
+                </span>
               </div>
             </div>
           </div>
@@ -267,21 +293,27 @@ export function FinderWindow({
             className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 border border-red-600/60 flex items-center justify-center group cursor-pointer"
             title="Close"
           >
-            <span className="text-[8px] font-bold text-red-950 opacity-0 group-hover:opacity-100">✕</span>
+            <span className="text-[8px] font-bold text-red-950 opacity-0 group-hover:opacity-100">
+              ✕
+            </span>
           </button>
           <button
             onClick={() => onClose(id)}
             className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 border border-yellow-600/60 flex items-center justify-center group cursor-pointer"
             title="Minimize"
           >
-            <span className="text-[8px] font-bold text-yellow-950 opacity-0 group-hover:opacity-100">−</span>
+            <span className="text-[8px] font-bold text-yellow-950 opacity-0 group-hover:opacity-100">
+              −
+            </span>
           </button>
           <button
             onClick={() => setIsMaximized(!isMaximized)}
             className="w-3 h-3 rounded-full bg-emerald-500 hover:bg-emerald-600 border border-emerald-600/60 flex items-center justify-center group cursor-pointer"
             title="Zoom"
           >
-            <span className="text-[8px] font-bold text-emerald-950 opacity-0 group-hover:opacity-100">⤢</span>
+            <span className="text-[8px] font-bold text-emerald-950 opacity-0 group-hover:opacity-100">
+              ⤢
+            </span>
           </button>
         </div>
 
@@ -353,7 +385,9 @@ export function FinderWindow({
                     : "text-slate-700 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800/60"
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? "text-white" : "text-blue-500"}`} />
+                <Icon
+                  className={`w-4 h-4 ${isActive ? "text-white" : "text-blue-500"}`}
+                />
                 <span>{fav.label}</span>
               </button>
             );
