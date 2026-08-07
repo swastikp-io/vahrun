@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Volume2, VolumeX } from "lucide-react";
 import { DESKTOP_ICONS, DesktopIconItem } from "@/data/desktopIcons";
 import {
   TRACKS,
@@ -38,30 +37,25 @@ export default function Home() {
   const [iconsList, setIconsList] = useState<DesktopIconItem[]>(DESKTOP_ICONS);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
-  const [isAudioMuted, setIsAudioMuted] = useState<boolean>(false);
 
-  // Background audio setup with mobile browser (iOS Safari / Android Chrome) touch unlock & autoplay handling
+  // Always play wewerehere.mp3 automatically in continuous loop with seamless mobile browser touch unlock
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     audio.volume = 0.85;
 
-    const attemptPlay = async () => {
+    const attemptPlay = () => {
       if (!audio) return;
-      try {
-        await audio.play();
-        setIsAudioPlaying(true);
-      } catch {
-        setIsAudioPlaying(false);
-      }
+      audio.play().catch(() => {
+        // Autoplay policy prevented playback; will retry seamlessly on first user touch/interaction
+      });
     };
 
     attemptPlay();
 
     const handleInteraction = () => {
-      if (audio.paused && !isAudioMuted) {
+      if (audio.paused) {
         attemptPlay();
       }
     };
@@ -73,6 +67,7 @@ export default function Home() {
       "pointerdown",
       "keydown",
       "scroll",
+      "pageshow",
     ];
 
     events.forEach((evt) => {
@@ -80,7 +75,7 @@ export default function Home() {
     });
 
     const handleVisibilityChange = () => {
-      if (!document.hidden && !isAudioMuted && audio.paused) {
+      if (!document.hidden && audio.paused) {
         attemptPlay();
       }
     };
@@ -93,28 +88,7 @@ export default function Home() {
       });
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [isAudioMuted]);
-
-  const toggleAudio = (e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (audio.paused) {
-      audio
-        .play()
-        .then(() => {
-          setIsAudioPlaying(true);
-          setIsAudioMuted(false);
-          audio.muted = false;
-        })
-        .catch(() => {});
-    } else {
-      audio.pause();
-      setIsAudioPlaying(false);
-      setIsAudioMuted(true);
-    }
-  };
+  }, []);
 
   // Keyboard shortcut listener (Escape to deselect)
   useEffect(() => {
@@ -416,37 +390,15 @@ export default function Home() {
         onClose={() => setIsControlCenterOpen(false)}
       />
 
-      {/* Hidden HTML Audio Tag for wewerehere.mp3 with Mobile Support */}
+      {/* Hidden HTML Audio Tag for wewerehere.mp3 (Continuous Loop) */}
       <audio
         ref={audioRef}
         src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/wewerehere.mp3`}
         loop
+        autoPlay
         playsInline
         preload="auto"
       />
-
-      {/* Floating Audio Control Indicator for Mobile & Desktop */}
-      <button
-        onClick={toggleAudio}
-        className="fixed bottom-12 right-4 sm:bottom-5 sm:right-5 z-40 flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/80 hover:bg-slate-800/90 text-white/90 backdrop-blur-md border border-white/20 shadow-xl text-xs font-medium transition-all active:scale-95 select-none cursor-pointer"
-        title={isAudioPlaying ? "Mute background audio" : "Play background audio"}
-      >
-        {isAudioPlaying ? (
-          <>
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="hidden xs:inline text-[11px] font-mono">wewerehere.mp3</span>
-          </>
-        ) : (
-          <>
-            <VolumeX className="w-3.5 h-3.5 text-amber-400" />
-            <span className="text-[11px] font-mono">Tap for sound</span>
-          </>
-        )}
-      </button>
     </div>
   );
 }
