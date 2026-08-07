@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { DESKTOP_ICONS, DesktopIconItem } from "@/data/desktopIcons";
 import {
   TRACKS,
@@ -36,57 +36,37 @@ export default function Home() {
     useState<boolean>(false);
   const [iconsList, setIconsList] = useState<DesktopIconItem[]>(DESKTOP_ICONS);
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  // Always play wewerehere.mp3 automatically in continuous loop with seamless mobile browser touch unlock
+  // Always play wewerehere.mp3 automatically when website opens (continuous loop, no pause option)
   useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+    const audio = new Audio(`${basePath}/wewerehere.mp3`);
+    audio.loop = true;
     audio.volume = 0.85;
 
-    const attemptPlay = () => {
-      if (!audio) return;
+    const playAudio = () => {
       audio.play().catch(() => {
-        // Autoplay policy prevented playback; will retry seamlessly on first user touch/interaction
+        // Autoplay policy fallback: trigger playback on first user interaction
       });
     };
 
-    attemptPlay();
+    playAudio();
 
-    const handleInteraction = () => {
-      if (audio.paused) {
-        attemptPlay();
-      }
+    const handleFirstInteraction = () => {
+      audio.play().catch(() => {});
+      window.removeEventListener("click", handleFirstInteraction);
+      window.removeEventListener("keydown", handleFirstInteraction);
+      window.removeEventListener("touchstart", handleFirstInteraction);
     };
 
-    const events = [
-      "click",
-      "touchstart",
-      "touchend",
-      "pointerdown",
-      "keydown",
-      "scroll",
-      "pageshow",
-    ];
-
-    events.forEach((evt) => {
-      window.addEventListener(evt, handleInteraction, { passive: true });
-    });
-
-    const handleVisibilityChange = () => {
-      if (!document.hidden && audio.paused) {
-        attemptPlay();
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("click", handleFirstInteraction);
+    window.addEventListener("keydown", handleFirstInteraction);
+    window.addEventListener("touchstart", handleFirstInteraction);
 
     return () => {
-      events.forEach((evt) => {
-        window.removeEventListener(evt, handleInteraction);
-      });
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("click", handleFirstInteraction);
+      window.removeEventListener("keydown", handleFirstInteraction);
+      window.removeEventListener("touchstart", handleFirstInteraction);
+      audio.pause();
     };
   }, []);
 
@@ -388,16 +368,6 @@ export default function Home() {
       <ControlCenter
         isOpen={isControlCenterOpen}
         onClose={() => setIsControlCenterOpen(false)}
-      />
-
-      {/* Hidden HTML Audio Tag for wewerehere.mp3 (Continuous Loop) */}
-      <audio
-        ref={audioRef}
-        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/wewerehere.mp3`}
-        loop
-        autoPlay
-        playsInline
-        preload="auto"
       />
     </div>
   );
