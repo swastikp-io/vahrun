@@ -38,7 +38,8 @@ export default function Home() {
 
   // Always play wewerehere.mp3 automatically when website opens (continuous loop, no pause option)
   useEffect(() => {
-    const audio = new Audio("/wewerehere.mp3");
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+    const audio = new Audio(`${basePath}/wewerehere.mp3`);
     audio.loop = true;
     audio.volume = 0.85;
 
@@ -169,7 +170,7 @@ export default function Home() {
       <div
         className="absolute inset-0 bg-cover bg-[position:65%_center] sm:bg-center bg-no-repeat transition-transform duration-700 scale-100"
         style={{
-          backgroundImage: `url('/ChatGPT%20Image%20Aug%207,%202026,%2005_25_12%20AM.png')`,
+          backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_PATH || ""}/ChatGPT%20Image%20Aug%207,%202026,%2005_25_12%20AM.png')`,
         }}
       >
         {/* Subtle Dark Overlay for extra readability */}
