@@ -294,6 +294,15 @@ export default function Home() {
           </a>
         </div>
 
+        {/* Mobile View Footer (Bottom Left: all rights reserved 2026, Bottom Right: vahrun) */}
+        <div
+          className="absolute bottom-4 left-4 right-4 z-10 flex justify-between items-center text-[12px] sm:hidden text-white/80 font-normal tracking-wide drop-shadow-[0_1.5px_3px_rgba(0,0,0,0.95)] select-text"
+          style={{ fontFamily: 'var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif' }}
+        >
+          <span>all rights reserved 2026</span>
+          <span>vahrun</span>
+        </div>
+
         {/* Draggable Desktop Icons */}
         {iconsList.map((icon) => (
           <DesktopIcon
