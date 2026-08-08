@@ -1,384 +1,419 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { DESKTOP_ICONS, DesktopIconItem } from "@/data/desktopIcons";
 import {
-  TRACKS,
-  GALLERY_ITEMS,
-  Track,
-  GalleryItem,
+  VAHRUN_BIO,
+  PROJECTS,
+  PLOTTING_ITEMS,
+  ARCHIVE_ITEMS,
 } from "@/data/portfolioData";
-import { DesktopIcon } from "@/components/DesktopIcon";
-import { FinderWindow } from "@/components/FinderWindow";
-import { AudioPlayerWindow } from "@/components/AudioPlayerWindow";
-import { QuickLookModal } from "@/components/QuickLookModal";
-import { SpotlightSearch } from "@/components/SpotlightSearch";
-import { ControlCenter } from "@/components/ControlCenter";
-import { AboutMeNoteModal } from "@/components/AboutMeNoteModal";
 
-interface WindowState {
-  id: string;
-  title: string;
-  folderId: string;
-  zIndex: number;
-}
+type ModalType =
+  | "projects"
+  | "whoiam"
+  | "plotting"
+  | "archives"
+  | "now"
+  | "music"
+  | "prev"
+  | "posts"
+  | null;
 
 export default function Home() {
-  const [selectedIconId, setSelectedIconId] = useState<string | null>(null);
-  const [windows, setWindows] = useState<WindowState[]>([]);
-  const [activeZIndex, setActiveZIndex] = useState<number>(100);
-  const [activeAudioTrack, setActiveAudioTrack] = useState<Track | null>(null);
-  const [activeQuickLookItem, setActiveQuickLookItem] =
-    useState<GalleryItem | null>(null);
-  const [isAboutMeNoteOpen, setIsAboutMeNoteOpen] = useState<boolean>(false);
-  const [isSpotlightOpen, setIsSpotlightOpen] = useState<boolean>(false);
-  const [isControlCenterOpen, setIsControlCenterOpen] =
-    useState<boolean>(false);
-  const [iconsList, setIconsList] = useState<DesktopIconItem[]>(DESKTOP_ICONS);
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
+  const [heroImage, setHeroImage] = useState<string>(
+    "https://i.pinimg.com/736x/e8/fa/65/e8fa65698a38f595ae566228f3fe8777.jpg"
+  );
 
-  // Always play wewerehere.mp3 automatically when website opens (continuous loop, no pause option)
-  useEffect(() => {
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-    const audio = new Audio(`${basePath}/wewerehere.mp3`);
-    audio.loop = true;
-    audio.volume = 0.85;
-
-    const playAudio = () => {
-      audio.play().catch(() => {
-        // Autoplay policy fallback: trigger playback on first user interaction
-      });
-    };
-
-    playAudio();
-
-    const handleFirstInteraction = () => {
-      audio.play().catch(() => {});
-      window.removeEventListener("click", handleFirstInteraction);
-      window.removeEventListener("keydown", handleFirstInteraction);
-      window.removeEventListener("touchstart", handleFirstInteraction);
-    };
-
-    window.addEventListener("click", handleFirstInteraction);
-    window.addEventListener("keydown", handleFirstInteraction);
-    window.addEventListener("touchstart", handleFirstInteraction);
-
-    return () => {
-      window.removeEventListener("click", handleFirstInteraction);
-      window.removeEventListener("keydown", handleFirstInteraction);
-      window.removeEventListener("touchstart", handleFirstInteraction);
-      audio.pause();
-    };
-  }, []);
-
-  // Keyboard shortcut listener (Escape to deselect)
+  // Close modal on Escape key press
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setSelectedIconId(null);
+        setActiveModal(null);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Desktop click handler to deselect icons and close popups
-  const handleDesktopClick = () => {
-    setSelectedIconId(null);
-    setIsControlCenterOpen(false);
-  };
-
-  // Open or focus a folder window
-  const openFolderWindow = (folderId: string, title?: string) => {
-    const existing = windows.find((w) => w.folderId === folderId);
-    const newZ = activeZIndex + 1;
-    setActiveZIndex(newZ);
-
-    if (existing) {
-      setWindows((prev) =>
-        prev.map((w) => (w.folderId === folderId ? { ...w, zIndex: newZ } : w)),
-      );
-    } else {
-      const windowTitle = title || folderId.replace("-", " ");
-      setWindows((prev) => [
-        ...prev,
-        { id: `win-${Date.now()}`, title: windowTitle, folderId, zIndex: newZ },
-      ]);
-    }
-  };
-
-  // Double click icon handler
-  const handleIconDoubleClick = (icon: DesktopIconItem) => {
-    setSelectedIconId(icon.id);
-
-    if (
-      icon.id === "aboutme-txt" ||
-      icon.label.toLowerCase() === "aboutme.txt" ||
-      icon.label.toLowerCase().includes("about")
-    ) {
-      setIsAboutMeNoteOpen(true);
-    } else if (
-      icon.type === "folder" ||
-      icon.type === "app" ||
-      icon.type === "shortcut"
-    ) {
-      openFolderWindow(icon.targetFolder || "documents", icon.label);
-    } else if (icon.type === "audio") {
-      setActiveAudioTrack(TRACKS[0]);
-    } else if (icon.type === "image") {
-      const matchedGallery = GALLERY_ITEMS.find(
-        (g) => g.title === icon.label,
-      ) || {
-        id: icon.id,
-        title: icon.label || "Visual Asset",
-        category: "Visual Design",
-        aspectRatio: "1/1",
-        bgGradient: icon.previewGradient || "from-slate-800 to-indigo-950",
-        caption: icon.caption || "Vahrun Creative Asset",
-      };
-      setActiveQuickLookItem(matchedGallery);
-    } else {
-      setIsAboutMeNoteOpen(true);
-    }
-  };
-
-  // Icon single click selection
-  const handleIconSelect = (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setSelectedIconId(id);
-  };
-
-  // Bring window to front
-  const focusWindow = (id: string) => {
-    const newZ = activeZIndex + 1;
-    setActiveZIndex(newZ);
-    setWindows((prev) =>
-      prev.map((w) => (w.id === id ? { ...w, zIndex: newZ } : w)),
-    );
-  };
-
-  // Close window
-  const closeWindow = (id: string) => {
-    setWindows((prev) => prev.filter((w) => w.id !== id));
-  };
-
   return (
-    <div
-      onClick={handleDesktopClick}
-      className="relative w-screen h-screen overflow-hidden select-none bg-black font-sans"
-    >
-      {/* Desktop Background Wallpaper with dark overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-[position:65%_center] sm:bg-center bg-no-repeat transition-transform duration-700 scale-100"
-        style={{
-          backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_PATH || ""}/ChatGPT%20Image%20Aug%207,%202026,%2005_25_12%20AM.png')`,
-        }}
-      >
-        {/* Subtle Dark Overlay for extra readability */}
-        <div className="absolute inset-0 bg-black/20 sm:bg-black/12 backdrop-brightness-[0.98]" />
-      </div>
+    <div className="min-h-screen lg:h-screen w-full bg-white text-neutral-900 flex flex-col justify-between p-4 sm:p-6 lg:p-8 font-sans select-none overflow-y-auto lg:overflow-hidden no-scrollbar">
+      {/* Top Header Bar */}
+      <header className="w-full flex justify-between items-center pb-3 flex-shrink-0">
+        {/* Top Left: Logo */}
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-black select-text">
+          vahrun.com
+        </h1>
+      </header>
 
-      {/* Desktop Main Workspace Area */}
-      <main className="relative w-full h-full overflow-hidden">
-        {/* Vahrun Bio Text Overlay (Responsive layout for Mobile, Tablet, Desktop) */}
-        <div
-          className="absolute top-[28%] xs:top-[31%] sm:top-[34%] left-[4%] sm:left-[4.5%] z-10 select-text text-white leading-[1.55] sm:leading-[1.6] space-y-3.5 sm:space-y-5 text-[13px] xs:text-[14px] sm:text-[15px] md:text-[16px] font-normal tracking-normal drop-shadow-[0_1.5px_4px_rgba(0,0,0,0.95)] max-w-[88vw] xs:max-w-[400px] sm:max-w-[460px] md:max-w-[500px]"
-          style={{
-            fontFamily:
-              'var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif',
-          }}
-        >
-          {/* Block 1 */}
-          <p>Hi, my name is Vahrun.</p>
+      {/* Main Container - Fully Responsive Grid/Flex */}
+      <main className="flex-1 w-full flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-12 min-h-0 py-2 lg:overflow-hidden">
+        {/* Left Column: Feature Image */}
+        <div className="w-full lg:w-[60%] xl:w-[66%] h-[320px] sm:h-[450px] lg:h-full flex-shrink-0 relative bg-neutral-900 overflow-hidden flex items-center justify-center">
+          <img
+            src={heroImage}
+            alt="vahrun"
+            className="w-full h-full object-cover block transition-all duration-300"
+          />
+        </div>
 
-          {/* Block 2 */}
-          <div>
-            <p>I'm a music producer from Lucknow.</p>
-            <p>I spend an unhealthy amount of time turning random</p>
-            <p>ideas into songs and convincing myself "one more tweak"</p>
-            <p>will finally finish the mix.</p>
-          </div>
+        {/* Right Column: Heading, Text Links & Things Change list */}
+        <div className="w-full lg:w-[40%] xl:w-[34%] lg:h-full lg:min-h-0 flex flex-col justify-between py-1 lg:overflow-y-auto select-text pr-1 gap-6 lg:gap-0 no-scrollbar">
+          {/* Top Section */}
+          <div className="space-y-4 sm:space-y-6">
+            {/* Main Headline */}
+            <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[42px] font-bold leading-[1.18] text-black tracking-tight">
+              Vahrun is a music producer and design engineer based in Lucknow.
+            </h2>
 
-          {/* Block 3 - Indented right */}
-          <p className="pl-28 xs:pl-36 sm:pl-56 md:pl-64 font-normal">
-            It never does.
-          </p>
-
-          {/* Block 4 */}
-          <div>
-            <p>I make music that leans into emotion, texture, and stories</p>
-            <p>that feel a little too real. You can find my releases on</p>
-            <p>
-              <a
-                href="https://open.spotify.com/artist/2tRx1njcfoGrTaDPPNj5OK?si=212e8765f5914493"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline cursor-pointer"
+            {/* Paragraph with inline underlined links */}
+            <p className="text-[15px] sm:text-[16px] md:text-[17px] leading-[1.55] text-neutral-800 font-normal">
+              Explore{" "}
+              <button
+                onClick={() => setActiveModal("projects")}
+                className="underline underline-offset-4 font-normal text-black hover:text-neutral-500 focus:outline-none cursor-pointer"
               >
-                Spotify
-              </a>
+                my projects
+              </button>
               ,{" "}
-              <a
-                href="https://music.apple.com/us/artist/vahrun/1745512124"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline cursor-pointer"
+              <button
+                onClick={() => setActiveModal("whoiam")}
+                className="underline underline-offset-4 font-normal text-black hover:text-neutral-500 focus:outline-none cursor-pointer"
               >
-                Apple Music
-              </a>
-              , and{" "}
-              <a
-                href="https://www.youtube.com/@whyrunvahrun"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline cursor-pointer"
+                learn about me
+              </button>
+              ,{" "}
+              <button
+                onClick={() => setActiveModal("plotting")}
+                className="underline underline-offset-4 font-normal text-black hover:text-neutral-500 focus:outline-none cursor-pointer"
               >
-                YouTube
-              </a>
+                see what I’m working on
+              </button>
+              , or{" "}
+              <button
+                onClick={() => setActiveModal("archives")}
+                className="underline underline-offset-4 font-normal text-black hover:text-neutral-500 focus:outline-none cursor-pointer"
+              >
+                browse the archives
+              </button>
               .
             </p>
           </div>
 
-          {/* Block 5 */}
-          <div>
-            <p>If you're here to listen, collaborate, or just snoop around,</p>
-            <p>you're in the right place.</p>
+          {/* Bottom Section: things change list */}
+          <div className="mt-4 sm:mt-6 pt-2">
+            <button
+              onClick={() => {
+                setHeroImage(
+                  "https://i.pinimg.com/736x/e8/fa/65/e8fa65698a38f595ae566228f3fe8777.jpg"
+                );
+              }}
+              className="text-xs sm:text-[13px] font-semibold text-neutral-500 hover:text-black mb-2 tracking-tight transition-colors cursor-pointer text-left focus:outline-none"
+            >
+              things change
+            </button>
+
+            <div className="flex flex-col gap-1.5 sm:gap-1 text-sm sm:text-[15px] text-neutral-400">
+              <button
+                onClick={() => {
+                  setHeroImage(
+                    "https://i.pinimg.com/736x/1b/94/7f/1b947fa55f81f43a186e7583c193ae16.jpg"
+                  );
+                }}
+                className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
+              >
+                handling anti-performance
+              </button>
+              <button
+                onClick={() => setActiveModal("music")}
+                className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
+              >
+                lucknow nights (texture vol. 1)
+              </button>
+              <button
+                onClick={() => setActiveModal("archives")}
+                className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
+              >
+                analog reverie
+              </button>
+              <button
+                onClick={() => setActiveModal("projects")}
+                className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
+              >
+                soundscapes ep
+              </button>
+              <button
+                onClick={() => setActiveModal("projects")}
+                className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
+              >
+                custom tactile midi controller
+              </button>
+              <button
+                onClick={() => setActiveModal("whoiam")}
+                className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
+              >
+                sound design & hardware r&d
+              </button>
+              <button
+                onClick={() => setActiveModal("projects")}
+                className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
+              >
+                gumroad audio presets
+              </button>
+              <button
+                onClick={() => setActiveModal("music")}
+                className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
+              >
+                motion visualizer works
+              </button>
+            </div>
           </div>
         </div>
-
-        {/* Right Side Tile Floating Social Links (Responsive for Mobile, Tablet & Desktop) */}
-        <div
-          className="select-text z-20"
-          style={{
-            fontFamily:
-              'var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif',
-          }}
-        >
-          {/* Top Row: Shop (Left) & Spotify (Right) aligned in a straight line */}
-          <div className="absolute top-[4%] sm:top-[15%] left-[4%] sm:left-[4.5%] right-[4%] sm:right-[26%] flex items-baseline justify-between pointer-events-none">
-            <a
-              href="https://vahrun.gumroad.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pointer-events-auto text-[14px] sm:text-2xl md:text-[28px] font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] cursor-pointer hover:underline leading-none"
-            >
-              Shop
-            </a>
-            <a
-              href="https://open.spotify.com/artist/2tRx1njcfoGrTaDPPNj5OK?si=212e8765f5914493"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pointer-events-auto text-[14px] sm:text-2xl md:text-[28px] font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] cursor-pointer hover:underline leading-none"
-            >
-              Spotify
-            </a>
-          </div>
-
-          {/* Apple Music */}
-          <a
-            href="https://music.apple.com/us/artist/vahrun/1745512124"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute top-[9%] sm:top-[28%] right-[4%] sm:right-[9%] text-[14px] sm:text-2xl md:text-[28px] font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] cursor-pointer"
-          >
-            Apple Music
-          </a>
-
-          {/* YouTube */}
-          <a
-            href="https://www.youtube.com/@whyrunvahrun"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute top-[14%] sm:top-[47%] right-[4%] sm:right-[17%] text-[14px] sm:text-2xl md:text-[28px] font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] cursor-pointer"
-          >
-            YouTube
-          </a>
-
-          {/* Instagram */}
-          <a
-            href="https://www.instagram.com/itsvahrun/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute top-[19%] sm:top-[67%] right-[4%] sm:right-[7%] text-[14px] sm:text-2xl md:text-[28px] font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] cursor-pointer"
-          >
-            Instagram
-          </a>
-        </div>
-
-        {/* Mobile View Footer (Bottom Left: all rights reserved 2026, Bottom Right: vahrun) */}
-        <div
-          className="absolute bottom-4 left-4 right-4 z-10 flex justify-between items-center text-[12px] sm:hidden text-white/80 font-normal tracking-wide drop-shadow-[0_1.5px_3px_rgba(0,0,0,0.95)] select-text"
-          style={{ fontFamily: 'var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif' }}
-        >
-          <span>all rights reserved 2026</span>
-          <span>vahrun</span>
-        </div>
-
-        {/* Draggable Desktop Icons */}
-        {iconsList.map((icon) => (
-          <DesktopIcon
-            key={icon.id}
-            icon={icon}
-            isSelected={selectedIconId === icon.id}
-            onSelect={handleIconSelect}
-            onDoubleClick={handleIconDoubleClick}
-          />
-        ))}
-
-        {/* Finder Windows */}
-        {windows.map((win) => (
-          <FinderWindow
-            key={win.id}
-            id={win.id}
-            title={win.title}
-            folderId={win.folderId}
-            zIndex={win.zIndex}
-            onClose={closeWindow}
-            onFocus={focusWindow}
-            onOpenAudioTrack={(track) => setActiveAudioTrack(track)}
-            onOpenQuickLookImage={(item) => setActiveQuickLookItem(item)}
-            onOpenAboutMeNote={() => setIsAboutMeNoteOpen(true)}
-          />
-        ))}
-
-        {/* Audio Player Window */}
-        {activeAudioTrack && (
-          <AudioPlayerWindow
-            track={activeAudioTrack}
-            zIndex={activeZIndex + 2}
-            onClose={() => setActiveAudioTrack(null)}
-            onFocus={() => setActiveZIndex(activeZIndex + 3)}
-          />
-        )}
-
-        {/* Quick Look Image Viewer Modal */}
-        <QuickLookModal
-          item={activeQuickLookItem}
-          zIndex={activeZIndex + 4}
-          onClose={() => setActiveQuickLookItem(null)}
-          onFocus={() => setActiveZIndex(activeZIndex + 5)}
-        />
-
-        {/* About Me Text Note Modal */}
-        <AboutMeNoteModal
-          isOpen={isAboutMeNoteOpen}
-          zIndex={activeZIndex + 6}
-          onClose={() => setIsAboutMeNoteOpen(false)}
-          onFocus={() => setActiveZIndex(activeZIndex + 7)}
-        />
       </main>
 
-      {/* Spotlight Search Bar */}
-      <SpotlightSearch
-        isOpen={isSpotlightOpen}
-        onClose={() => setIsSpotlightOpen(false)}
-        onSelectIcon={(icon) => handleIconDoubleClick(icon)}
-      />
+      {/* Modal Dialog Overlays */}
+      {activeModal && (
+        <div
+          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 md:p-8 overflow-y-auto"
+          onClick={() => setActiveModal(null)}
+        >
+          <div
+            className="bg-white text-neutral-900 w-full max-w-2xl max-h-[85vh] overflow-y-auto p-5 sm:p-8 md:p-10 border border-neutral-200 shadow-2xl relative my-auto animate-in fade-in zoom-in-95 duration-150"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex justify-between items-center pb-4 mb-6 border-b border-neutral-200">
+              <h2 className="text-lg sm:text-xl font-bold tracking-tight text-black">
+                {activeModal === "projects" && "[ projects & portfolio ]"}
+                {(activeModal === "whoiam" || activeModal === "posts") &&
+                  "[ about & bio ]"}
+                {(activeModal === "plotting" || activeModal === "now") &&
+                  "[ now / up to ]"}
+                {(activeModal === "archives" || activeModal === "prev") &&
+                  "[ archives / was up to ]"}
+                {activeModal === "music" && "[ music & releases ]"}
+              </h2>
+              <button
+                onClick={() => setActiveModal(null)}
+                className="text-xs uppercase tracking-wider font-mono text-neutral-500 hover:text-black transition-colors focus:outline-none border border-neutral-300 hover:border-black px-2.5 py-1 cursor-pointer"
+              >
+                close [esc]
+              </button>
+            </div>
 
-      {/* Control Center Dropdown Modal */}
-      <ControlCenter
-        isOpen={isControlCenterOpen}
-        onClose={() => setIsControlCenterOpen(false)}
-      />
+            {/* Modal Content - Projects / Portfolio */}
+            {activeModal === "projects" && (
+              <div className="space-y-6">
+                <p className="text-sm text-neutral-600">
+                  Selected audio releases, design tools, and visual projects:
+                </p>
+                <div className="divide-y divide-neutral-100">
+                  {PROJECTS.map((project) => (
+                    <div
+                      key={project.id}
+                      className="py-4 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2"
+                    >
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <h3 className="font-semibold text-black">
+                            {project.title}
+                          </h3>
+                          <span className="text-[11px] font-mono bg-neutral-100 text-neutral-600 px-1.5 py-0.5 uppercase">
+                            {project.type}
+                          </span>
+                        </div>
+                        <p className="text-sm text-neutral-600">
+                          {project.description}
+                        </p>
+                      </div>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-medium text-black hover:underline flex-shrink-0 mt-1 sm:mt-0"
+                        >
+                          {project.linkLabel || "View project"} &rarr;
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Modal Content - Music */}
+            {activeModal === "music" && (
+              <div className="space-y-6">
+                <p className="text-sm text-neutral-600">
+                  Listen to latest music releases and soundscapes:
+                </p>
+                <div className="space-y-4">
+                  {PROJECTS.filter((p) => p.type === "music").map((project) => (
+                    <div
+                      key={project.id}
+                      className="p-4 border border-neutral-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3"
+                    >
+                      <div>
+                        <h3 className="font-bold text-black text-lg">
+                          {project.title}
+                        </h3>
+                        <p className="text-sm text-neutral-600">
+                          {project.description}
+                        </p>
+                      </div>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3 py-1.5 bg-black text-white text-xs font-medium hover:bg-neutral-800 transition-colors"
+                        >
+                          Listen &rarr;
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Modal Content - Who I Am / About / Posts */}
+            {(activeModal === "whoiam" || activeModal === "posts") && (
+              <div className="space-y-6">
+                <div className="space-y-3">
+                  <p className="text-base text-neutral-900 leading-relaxed">
+                    {VAHRUN_BIO.fullBio}
+                  </p>
+                  <p className="text-sm text-neutral-600">
+                    Based in Lucknow, India.
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-neutral-200 space-y-3">
+                  <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-500">
+                    Connect & Platforms
+                  </h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <a
+                      href={VAHRUN_BIO.socials.spotify}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-black hover:underline flex items-center gap-1.5"
+                    >
+                      Spotify &rarr;
+                    </a>
+                    <a
+                      href={VAHRUN_BIO.socials.appleMusic}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-black hover:underline flex items-center gap-1.5"
+                    >
+                      Apple Music &rarr;
+                    </a>
+                    <a
+                      href={VAHRUN_BIO.socials.youtube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-black hover:underline flex items-center gap-1.5"
+                    >
+                      YouTube &rarr;
+                    </a>
+                    <a
+                      href={VAHRUN_BIO.socials.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-black hover:underline flex items-center gap-1.5"
+                    >
+                      Instagram &rarr;
+                    </a>
+                    <a
+                      href={VAHRUN_BIO.socials.shop}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-black hover:underline flex items-center gap-1.5"
+                    >
+                      Gumroad Shop &rarr;
+                    </a>
+                    <a
+                      href={VAHRUN_BIO.socials.email}
+                      className="text-sm text-black hover:underline flex items-center gap-1.5"
+                    >
+                      Contact Email &rarr;
+                    </a>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-neutral-200 space-y-2">
+                  <h3 className="text-xs font-mono uppercase tracking-wider text-neutral-500">
+                    Disciplines
+                  </h3>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {VAHRUN_BIO.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs bg-neutral-100 text-neutral-800 px-2.5 py-1"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Modal Content - Now / Plotting */}
+            {(activeModal === "plotting" || activeModal === "now") && (
+              <div className="space-y-6">
+                <p className="text-sm text-neutral-600">
+                  Active experiments, upcoming releases, and design hardware work-in-progress:
+                </p>
+                <div className="divide-y divide-neutral-100">
+                  {PLOTTING_ITEMS.map((item) => (
+                    <div key={item.id} className="py-4 first:pt-0 last:pb-0 space-y-1.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="font-semibold text-black">{item.title}</h3>
+                        <span className="text-[11px] font-mono bg-black text-white px-2 py-0.5">
+                          {item.status}
+                        </span>
+                      </div>
+                      <p className="text-sm text-neutral-600">{item.description}</p>
+                      {item.expectedDate && (
+                        <p className="text-xs text-neutral-400 font-mono">
+                          Target timeline: {item.expectedDate}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Modal Content - Archives / Prev */}
+            {(activeModal === "archives" || activeModal === "prev") && (
+              <div className="space-y-6">
+                <p className="text-sm text-neutral-600">
+                  Explorations from previous years, tape demos, and studio archives:
+                </p>
+                <div className="divide-y divide-neutral-100">
+                  {ARCHIVE_ITEMS.map((item) => (
+                    <div key={item.id} className="py-4 first:pt-0 last:pb-0 space-y-1">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-semibold text-black">{item.title}</h3>
+                        <span className="text-xs font-mono text-neutral-400">{item.year}</span>
+                      </div>
+                      <span className="text-[11px] font-mono uppercase text-neutral-500 block">
+                        {item.category}
+                      </span>
+                      <p className="text-sm text-neutral-600 pt-0.5">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

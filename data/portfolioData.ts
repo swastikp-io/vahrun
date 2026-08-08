@@ -10,31 +10,47 @@ export interface Track {
   audioUrl?: string;
 }
 
-export interface GalleryItem {
+export interface ProjectItem {
   id: string;
   title: string;
-  category: string;
-  aspectRatio: string;
-  bgGradient: string;
-  caption: string;
+  type: "music" | "design" | "video" | "product";
+  description: string;
+  year: string;
+  link?: string;
+  linkLabel?: string;
 }
 
-export interface VideoProject {
+export interface PlottingItem {
   id: string;
   title: string;
-  role: string;
+  status: string;
+  description: string;
+  expectedDate?: string;
+}
+
+export interface ArchiveItem {
+  id: string;
+  title: string;
   year: string;
-  software: string;
-  thumbnailGradient: string;
+  category: string;
+  description: string;
 }
 
 export const VAHRUN_BIO = {
   name: "vahrun",
-  title: "Music Producer & Visual Artist",
+  title: "Music Producer & Design Engineer",
   location: "Lucknow, India",
   description:
-    "Crafting soundscapes that blend emotion, texture, and storytelling.",
-  tags: ["Music Production", "Sound Design", "Video Editing", "Graphic Design"],
+    "vahrun is a music producer and design engineer based in Lucknow, turning ideas into sounds and things.",
+  fullBio:
+    "vahrun is a music producer and design engineer based in Lucknow, turning ideas into sounds and things. Blending textured soundscapes, tactile physical gear aesthetics, and modern web software engineering to create immersive audiovisual tools and audio compositions.",
+  tags: [
+    "Music Production",
+    "Design Engineering",
+    "Sound Design",
+    "Video Editing",
+    "Interface Design",
+  ],
   socials: {
     spotify:
       "https://open.spotify.com/artist/2tRx1njcfoGrTaDPPNj5OK?si=212e8765f5914493",
@@ -46,99 +62,89 @@ export const VAHRUN_BIO = {
   },
 };
 
-export const TRACKS: Track[] = [
+export const PROJECTS: ProjectItem[] = [
   {
-    id: "track-1",
+    id: "p1",
     title: "Handling Anti-Performance",
-    album: "Single",
+    type: "music",
+    description: "Latest single release exploring raw textures and driving basslines.",
     year: "2024",
-    duration: "3:42",
-    spotifyUrl: "https://open.spotify.com",
-    appleMusicUrl: "https://music.apple.com",
-    youtubeUrl: "https://youtube.com",
+    link: "https://open.spotify.com/artist/2tRx1njcfoGrTaDPPNj5OK?si=212e8765f5914493",
+    linkLabel: "Listen on Spotify",
   },
   {
-    id: "track-2",
+    id: "p2",
     title: "Lucknow Nights (Texture Vol. 1)",
-    album: "Soundscapes EP",
+    type: "music",
+    description: "Atmospheric Soundscapes EP captured across ambient field recordings and analog synths.",
     year: "2023",
-    duration: "4:15",
-    spotifyUrl: "https://open.spotify.com",
-    appleMusicUrl: "https://music.apple.com",
-    youtubeUrl: "https://youtube.com",
+    link: "https://music.apple.com/us/artist/vahrun/1745512124",
+    linkLabel: "Listen on Apple Music",
   },
   {
-    id: "track-3",
-    title: "Iron Palace",
-    album: "Single",
-    year: "2023",
-    duration: "2:58",
-    spotifyUrl: "https://open.spotify.com",
-    appleMusicUrl: "https://music.apple.com",
-    youtubeUrl: "https://youtube.com",
-  },
-  {
-    id: "track-4",
-    title: "Analog Reverie",
-    album: "2018 Archive",
-    year: "2018",
-    duration: "3:10",
-    spotifyUrl: "https://open.spotify.com",
-    appleMusicUrl: "https://music.apple.com",
-    youtubeUrl: "https://youtube.com",
-  },
-];
-
-export const GALLERY_ITEMS: GalleryItem[] = [
-  {
-    id: "g1",
-    title: "CONTENT SHOOT.jpg",
-    category: "Photography",
-    aspectRatio: "4/5",
-    bgGradient: "from-slate-800 to-indigo-950",
-    caption: "Warehouse Studio Session - Lucknow 2023",
-  },
-  {
-    id: "g2",
-    title: "location 2.jpeg",
-    category: "Location Scout",
-    aspectRatio: "16/9",
-    bgGradient: "from-amber-900 to-stone-900",
-    caption: "Valley Echoes Sound Location",
-  },
-  {
-    id: "g3",
-    title: "IMG_0092.png",
-    category: "Design Visual",
-    aspectRatio: "1/1",
-    bgGradient: "from-cyan-900 to-blue-950",
-    caption: "Cover Artwork Concept #2",
-  },
-  {
-    id: "g4",
-    title: "0W SET1.jpg",
-    category: "Behind The Scenes",
-    aspectRatio: "4/3",
-    bgGradient: "from-zinc-800 to-neutral-950",
-    caption: "Modular Synthesizer & Pedalboard Setup",
-  },
-];
-
-export const VIDEO_PROJECTS: VideoProject[] = [
-  {
-    id: "v1",
-    title: "IMG_0093.mov",
-    role: "Director & Editor",
-    year: "2023",
-    software: "Adobe After Effects / Premiere",
-    thumbnailGradient: "from-purple-900 to-black",
-  },
-  {
-    id: "v2",
-    title: "Handling Anti-Performance Visualizer",
-    role: "Music & Motion Graphics",
+    id: "p3",
+    title: "vahrun audio & design shop",
+    type: "product",
+    description: "Custom sound kits, sample packs, design presets, and digital assets.",
     year: "2024",
-    software: "After Effects 2020",
-    thumbnailGradient: "from-blue-900 to-slate-950",
+    link: "https://vahrun.gumroad.com",
+    linkLabel: "Visit Shop",
+  },
+  {
+    id: "p4",
+    title: "Iron Palace Visualizer",
+    type: "video",
+    description: "Experimental motion visualizer made with Premiere & After Effects.",
+    year: "2023",
+    link: "https://www.youtube.com/@whyrunvahrun",
+    linkLabel: "Watch on YouTube",
+  },
+];
+
+export const PLOTTING_ITEMS: PlottingItem[] = [
+  {
+    id: "plot-1",
+    title: "Unreleased Ambient Tape Project",
+    status: "In Progress (Mixing)",
+    description: "A cassette-length ambient soundscape project crafted with cassette loops, granular synths, and field recordings.",
+    expectedDate: "Fall 2026",
+  },
+  {
+    id: "plot-2",
+    title: "Custom Tactile MIDI Controller",
+    status: "Hardware Prototype Phase",
+    description: "Designing a custom physical knob unit tailored for sound design parameter modulation.",
+    expectedDate: "Late 2026",
+  },
+  {
+    id: "plot-3",
+    title: "Interactive Web Audio Synthesizer",
+    status: "R&D",
+    description: "A minimal web-based browser synth UI for live audio manipulation.",
+    expectedDate: "2026",
+  },
+];
+
+export const ARCHIVE_ITEMS: ArchiveItem[] = [
+  {
+    id: "arc-1",
+    title: "Analog Reverie (2018 Demo)",
+    year: "2018",
+    category: "Audio Archive",
+    description: "Early experimental analog synth sessions recorded on 4-track tape.",
+  },
+  {
+    id: "arc-2",
+    title: "Warehouse Studio Session Photos",
+    year: "2023",
+    category: "Photography Archive",
+    description: "Visual documentation of modular synthesizer rig and pedalboard setup in Lucknow.",
+  },
+  {
+    id: "arc-3",
+    title: "Early UI & Audio Plugin Concepts",
+    year: "2022",
+    category: "Design Engineering Archive",
+    description: "Figma wireframes and DSP prototype sketches for audio manipulation interfaces.",
   },
 ];
