@@ -253,15 +253,25 @@ export default function Home() {
               'var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif',
           }}
         >
-          {/* Spotify */}
-          <a
-            href="https://open.spotify.com/artist/2tRx1njcfoGrTaDPPNj5OK?si=212e8765f5914493"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute top-[4%] sm:top-[15%] right-[4%] sm:right-[26%] text-[14px] sm:text-2xl md:text-[28px] font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] cursor-pointer"
-          >
-            Spotify
-          </a>
+          {/* Top Row: Shop (Left) & Spotify (Right) aligned in a straight line */}
+          <div className="absolute top-[4%] sm:top-[15%] left-[4%] sm:left-[4.5%] right-[4%] sm:right-[26%] flex items-baseline justify-between pointer-events-none">
+            <a
+              href="https://vahrun.gumroad.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pointer-events-auto text-[14px] sm:text-2xl md:text-[28px] font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] cursor-pointer hover:underline leading-none"
+            >
+              Shop
+            </a>
+            <a
+              href="https://open.spotify.com/artist/2tRx1njcfoGrTaDPPNj5OK?si=212e8765f5914493"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pointer-events-auto text-[14px] sm:text-2xl md:text-[28px] font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] cursor-pointer hover:underline leading-none"
+            >
+              Spotify
+            </a>
+          </div>
 
           {/* Apple Music */}
           <a

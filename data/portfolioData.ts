@@ -41,6 +41,7 @@ export const VAHRUN_BIO = {
     appleMusic: "https://music.apple.com/us/artist/vahrun/1745512124",
     youtube: "https://www.youtube.com/@whyrunvahrun",
     instagram: "https://www.instagram.com/itsvahrun/",
+    shop: "https://vahrun.gumroad.com",
     email: "mailto:contact@vahrun.com",
   },
 };
