@@ -14,7 +14,7 @@ export default function ProjectsPage() {
   const projectsGrid = [
     {
       id: "fretctrl",
-      title: "fretctrl",
+      title: "fretctrl [under development]",
       category: "web",
       image: "https://i.pinimg.com/1200x/cf/74/01/cf7401b52f90708569cbfaae9b36cf61.jpg",
       video: null,
@@ -34,7 +34,7 @@ export default function ProjectsPage() {
       id: "analog-reverie",
       title: "analog reverie",
       category: "web",
-      image: `${basePath}/Screenshot%202026-08-09%20081809.png`,
+      image: "https://i.pinimg.com/736x/7c/8f/a1/7c8fa12a9fe579157638a5909b68b927.jpg",
       video: null,
       href: `${basePath}/projects/analogreverie`,
       isExternal: true,

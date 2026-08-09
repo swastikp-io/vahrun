@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, DM_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -17,11 +17,17 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1.0,
+};
+
 export const metadata: Metadata = {
   title: "vahrun.com | music producer & design engineer",
   description:
     "Vahrun is a music producer and design engineer based in Lucknow.",
-  viewport: "width=device-width, initial-scale=1.0",
   keywords: [
     "vahrun",
     "music producer",
@@ -33,11 +39,11 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      { url: `${basePath}/favicon.ico`, sizes: "any" },
+      { url: `${basePath}/icon.png`, type: "image/png", sizes: "512x512" },
     ],
     apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+      { url: `${basePath}/apple-icon.png`, sizes: "180x180", type: "image/png" },
     ],
   },
 };

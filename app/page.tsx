@@ -145,13 +145,13 @@ export default function Home() {
                 }}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
               >
-                fretctrl
+                fretctrl [under development]
               </Link>
               <a
                 href={`${basePath}/analogreverie`}
                 onMouseEnter={() => {
                   setHeroImage(
-                    `${basePath}/Screenshot%202026-08-09%20081809.png`
+                    "https://i.pinimg.com/736x/7c/8f/a1/7c8fa12a9fe579157638a5909b68b927.jpg"
                   );
                 }}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer block"
