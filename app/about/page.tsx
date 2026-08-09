@@ -158,18 +158,17 @@ export default function AboutPage() {
               <p>
                 Currently open to freelance web + product work & sound design. I’m a
                 full stack web developer and creative developer who can design, develop, and ship
-                products with strong empathy for users. Email me if you’d like to chat.
+                products with strong empathy for users.{" "}
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=music.swastikpatel@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 font-medium text-white hover:text-neutral-300 transition-colors"
+                >
+                  Email
+                </a>{" "}
+                me if you’d like to chat.
               </p>
-            </div>
-          </div>
-
-          {/* Section 4: contact */}
-          <div className="flex flex-col sm:flex-row items-start gap-2 sm:gap-6 lg:gap-10 pt-2 pb-12 sm:pb-20">
-            <div className="w-full sm:w-28 lg:w-36 flex-shrink-0 text-xs sm:text-sm font-mono text-neutral-500 pt-0.5">
-              <span>contact</span>
-            </div>
-            <div className="flex-1 text-[15.5px] sm:text-[17px] font-mono text-white font-semibold">
-              <p>music [dot] swastikpatel [@] gmail [dot] com</p>
             </div>
           </div>
         </div>
