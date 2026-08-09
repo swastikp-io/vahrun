@@ -105,6 +105,11 @@ export default function Home() {
           {/* Bottom Section: things change list */}
           <div className="mt-4 sm:mt-6 pt-2">
             <button
+              onMouseEnter={() => {
+                setHeroImage(
+                  "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
+                );
+              }}
               onClick={() => {
                 setHeroImage(
                   "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
@@ -117,6 +122,11 @@ export default function Home() {
 
             <div className="flex flex-col gap-1.5 sm:gap-1 text-sm sm:text-[15px] text-neutral-400">
               <button
+                onMouseEnter={() => {
+                  setHeroImage(
+                    "https://i.pinimg.com/736x/1b/94/7f/1b947fa55f81f43a186e7583c193ae16.jpg"
+                  );
+                }}
                 onClick={() => {
                   setHeroImage(
                     "https://i.pinimg.com/736x/1b/94/7f/1b947fa55f81f43a186e7583c193ae16.jpg"
@@ -128,6 +138,11 @@ export default function Home() {
               </button>
               <Link
                 href="/fretctrl"
+                onMouseEnter={() => {
+                  setHeroImage(
+                    "https://i.pinimg.com/1200x/cf/74/01/cf7401b52f90708569cbfaae9b36cf61.jpg"
+                  );
+                }}
                 className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
               >
                 fretctrl
@@ -144,30 +159,55 @@ export default function Home() {
                 analog reverie
               </a>
               <button
+                onMouseEnter={() => {
+                  setHeroImage(
+                    "https://i.pinimg.com/736x/1b/94/7f/1b947fa55f81f43a186e7583c193ae16.jpg"
+                  );
+                }}
                 onClick={() => setActiveModal("projects")}
                 className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
               >
                 soundscapes ep
               </button>
               <button
+                onMouseEnter={() => {
+                  setHeroImage(
+                    "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
+                  );
+                }}
                 onClick={() => setActiveModal("projects")}
                 className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
               >
                 custom tactile midi controller
               </button>
               <button
+                onMouseEnter={() => {
+                  setHeroImage(
+                    "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
+                  );
+                }}
                 onClick={() => setActiveModal("whoiam")}
                 className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
               >
                 sound design & hardware r&d
               </button>
               <button
+                onMouseEnter={() => {
+                  setHeroImage(
+                    "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
+                  );
+                }}
                 onClick={() => setActiveModal("projects")}
                 className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
               >
                 gumroad audio presets
               </button>
               <button
+                onMouseEnter={() => {
+                  setHeroImage(
+                    "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/13/5f/91/135f918d-0515-fb9f-b4f8-97c0989daee9/199538692631.jpg/592x592bb.webp"
+                  );
+                }}
                 onClick={() => setActiveModal("music")}
                 className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
               >
