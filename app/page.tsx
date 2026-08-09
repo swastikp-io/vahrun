@@ -65,7 +65,7 @@ export default function Home() {
           <div className="space-y-4 sm:space-y-6">
             {/* Main Headline */}
             <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[42px] font-bold leading-[1.18] text-white tracking-tight">
-              Vahrun is a music producer and design engineer based in Lucknow.
+              Vahrun is a music producer and creative developer based in Lucknow.
             </h2>
 
             {/* Paragraph with inline underlined links */}
