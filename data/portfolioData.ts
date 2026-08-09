@@ -38,12 +38,12 @@ export interface ArchiveItem {
 
 export const VAHRUN_BIO = {
   name: "vahrun",
-  title: "Music Producer & Design Engineer",
+  title: "Music Producer & Creative Developer",
   location: "Lucknow, India",
   description:
-    "vahrun is a music producer and design engineer based in Lucknow, turning ideas into sounds and things.",
+    "vahrun is a music producer and creative developer based in Lucknow, turning ideas into sounds and things.",
   fullBio:
-    "vahrun is a music producer and design engineer based in Lucknow, turning ideas into sounds and things. Blending textured soundscapes, tactile physical gear aesthetics, and modern web software engineering to create immersive audiovisual tools and audio compositions.",
+    "vahrun is a music producer and creative developer based in Lucknow, turning ideas into sounds and things. Blending textured soundscapes, tactile physical gear aesthetics, and modern web software engineering to create immersive audiovisual tools and audio compositions.",
   tags: [
     "Music Production",
     "Design Engineering",

@@ -118,7 +118,7 @@ export default function AboutPage() {
             <div className="flex-1 space-y-4 text-[15.5px] sm:text-[17px] leading-[1.65] text-neutral-300 font-normal">
               <p>
                 Hi! My name is vahrun – welcome to my corner of the internet. I’m a
-                music producer and design engineer living in Lucknow, India. I make
+                music producer and creative developer living in Lucknow, India. I make
                 electronic, soundscape, and textured music. Previously, I’ve worked on
                 audio software R&D, synth hardware prototypes, and web design engineering.
               </p>
@@ -158,7 +158,7 @@ export default function AboutPage() {
             <div className="flex-1 text-[15.5px] sm:text-[17px] leading-[1.65] text-neutral-300 font-normal max-w-xl">
               <p>
                 Currently open to freelance web + product work & sound design. I’m a
-                full stack web developer and design engineer who can design, develop, and ship
+                full stack web developer and creative developer who can design, develop, and ship
                 products with strong empathy for users. Email me if you’d like to chat.
               </p>
             </div>

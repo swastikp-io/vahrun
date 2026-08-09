@@ -25,13 +25,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "vahrun.com | music producer & design engineer",
+  title: "vahrun",
   description:
-    "Vahrun is a music producer and design engineer based in Lucknow.",
+    "Vahrun is a music producer and creative developer based in Lucknow.",
   keywords: [
     "vahrun",
     "music producer",
-    "design engineer",
+    "creative developer",
     "lucknow",
     "soundscapes",
     "audio engineering",
