@@ -70,12 +70,12 @@ export default function Home() {
             {/* Paragraph with inline underlined links */}
             <p className="text-[15px] sm:text-[16px] md:text-[17px] leading-[1.55] text-neutral-800 font-normal">
               Explore{" "}
-              <button
-                onClick={() => setActiveModal("projects")}
+              <Link
+                href="/projects"
                 className="underline underline-offset-4 font-normal text-black hover:text-neutral-500 focus:outline-none cursor-pointer"
               >
                 my projects
-              </button>
+              </Link>
               ,{" "}
               <Link
                 href="/about"
