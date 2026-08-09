@@ -63,13 +63,13 @@ export default function CreativeDisciplinePage() {
       {/* Main Content Area */}
       <main className="flex-1 w-full flex flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 py-2">
         {/* Left Column: Section Tag & Audio Distraction Trigger */}
-        <div className="w-full lg:w-[14%] xl:w-[16%] flex-shrink-0 space-y-3">
+        <div className="w-full lg:w-[14%] xl:w-[16%] flex-shrink-0 flex flex-col justify-start">
           <span className="text-xs sm:text-sm font-mono text-neutral-500 block pt-1">
             /essay
           </span>
           <button
             onClick={toggleAudio}
-            className="text-xs sm:text-sm font-mono text-neutral-400 hover:text-white transition-colors block text-left focus:outline-none cursor-pointer"
+            className="text-xs sm:text-sm font-mono text-neutral-400 hover:text-white transition-colors block text-left focus:outline-none cursor-pointer mt-2 lg:mt-[5.2rem]"
           >
             {isPlaying ? "kill distraction" : "/click me and get distracted"}
           </button>
