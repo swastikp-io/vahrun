@@ -40,13 +40,13 @@ export default function FretctrlPage() {
         <div className="w-full lg:w-[46%] xl:w-[48%] h-full min-h-0 flex flex-col justify-between py-1 lg:overflow-y-auto select-text pr-2 no-scrollbar">
           <div className="space-y-6">
             {/* Tagline / Subtitle */}
-            <p className="font-headline text-lg sm:text-xl md:text-2xl text-neutral-800 font-normal leading-relaxed">
+            <p className="font-sans text-lg sm:text-xl md:text-2xl text-neutral-800 font-normal leading-relaxed">
               guitar ideas, without the blank page.
             </p>
 
             {/* Product Title */}
             <div className="pt-2">
-              <h1 className="font-headline text-2xl sm:text-3xl font-bold text-black tracking-tight mb-3">
+              <h1 className="font-sans text-2xl sm:text-3xl font-bold text-black tracking-tight mb-3">
                 FRETCTRL
               </h1>
 
@@ -63,7 +63,7 @@ export default function FretctrlPage() {
 
               {/* No Black Box Section */}
               <div className="pt-6 mt-6 border-t border-neutral-100 space-y-3 text-[16px] sm:text-[17px] leading-[1.6] text-neutral-800 font-normal max-w-xl">
-                <h3 className="font-headline text-lg sm:text-xl font-bold text-black tracking-tight">
+                <h3 className="font-sans text-lg sm:text-xl font-bold text-black tracking-tight">
                   no black box.
                 </h3>
                 <p>
