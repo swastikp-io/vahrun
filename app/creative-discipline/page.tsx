@@ -1,14 +1,47 @@
-import React from "react";
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "i don't think i have one creative discipline | vahrun",
-  description:
-    "An essay on multi-disciplinary creativity by vahrun.",
-};
+import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 
 export default function CreativeDisciplinePage() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+    const filename = "Fred again.. & SOAK - just stand there (15th August 2024).mp3";
+    const audioUrl = `${basePath}/${encodeURIComponent(filename)}`;
+    const audio = new Audio(audioUrl);
+    audioRef.current = audio;
+
+    const handleEnded = () => {
+      setIsPlaying(false);
+    };
+
+    audio.addEventListener("ended", handleEnded);
+
+    return () => {
+      audio.pause();
+      audio.removeEventListener("ended", handleEnded);
+    };
+  }, []);
+
+  const toggleAudio = () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch((err) => {
+          console.error("Playback error:", err);
+        });
+    }
+  };
+
   return (
     <div className="min-h-screen w-full bg-black text-neutral-100 flex flex-col justify-between p-4 sm:p-6 lg:p-10 pb-24 sm:pb-32 font-sans select-none overflow-y-auto no-scrollbar">
       {/* Top Header Bar */}
@@ -29,11 +62,17 @@ export default function CreativeDisciplinePage() {
 
       {/* Main Content Area */}
       <main className="flex-1 w-full flex flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 py-2">
-        {/* Left Column: Section Tag */}
-        <div className="w-full lg:w-[12%] flex-shrink-0">
+        {/* Left Column: Section Tag & Audio Distraction Trigger */}
+        <div className="w-full lg:w-[14%] xl:w-[16%] flex-shrink-0 space-y-3">
           <span className="text-xs sm:text-sm font-mono text-neutral-500 block pt-1">
             /essay
           </span>
+          <button
+            onClick={toggleAudio}
+            className="text-xs sm:text-sm font-mono text-neutral-400 hover:text-white transition-colors block text-left focus:outline-none cursor-pointer"
+          >
+            {isPlaying ? "kill distraction" : "/click me and get distracted"}
+          </button>
         </div>
 
         {/* Middle Column: Article Content */}
@@ -86,6 +125,12 @@ export default function CreativeDisciplinePage() {
           <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight pt-6">
             Music taught me to think in layers
           </h2>
+
+          <img
+            src="https://i.pinimg.com/736x/fe/0c/fc/fe0cfcc85f4c36eb3fe0888132185be0.jpg"
+            alt="Music taught me to think in layers"
+            className="my-6 block"
+          />
           <p>When I’m making music, I rarely think about a sound in isolation.</p>
           <p>
             A kick changes how the bass feels.<br />
