@@ -77,12 +77,12 @@ export default function Home() {
                 my projects
               </button>
               ,{" "}
-              <button
-                onClick={() => setActiveModal("whoiam")}
+              <Link
+                href="/about"
                 className="underline underline-offset-4 font-normal text-black hover:text-neutral-500 focus:outline-none cursor-pointer"
               >
                 learn about me
-              </button>
+              </Link>
               ,{" "}
               <button
                 onClick={() => setActiveModal("plotting")}
