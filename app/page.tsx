@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   VAHRUN_BIO,
   PROJECTS,
@@ -22,7 +23,7 @@ type ModalType =
 export default function Home() {
   const [activeModal, setActiveModal] = useState<ModalType>(null);
   const [heroImage, setHeroImage] = useState<string>(
-    "https://i.pinimg.com/736x/e8/fa/65/e8fa65698a38f595ae566228f3fe8777.jpg"
+    "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
   );
 
   // Close modal on Escape key press
@@ -105,7 +106,7 @@ export default function Home() {
             <button
               onClick={() => {
                 setHeroImage(
-                  "https://i.pinimg.com/736x/e8/fa/65/e8fa65698a38f595ae566228f3fe8777.jpg"
+                  "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
                 );
               }}
               className="text-xs sm:text-[13px] font-semibold text-neutral-500 hover:text-black mb-2 tracking-tight transition-colors cursor-pointer text-left focus:outline-none"
@@ -124,14 +125,18 @@ export default function Home() {
               >
                 handling anti-performance
               </button>
-              <button
-                onClick={() => setActiveModal("music")}
+              <Link
+                href="/fretctrl"
                 className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
               >
-                lucknow nights (texture vol. 1)
-              </button>
+                fretctrl
+              </Link>
               <button
-                onClick={() => setActiveModal("archives")}
+                onClick={() => {
+                  setHeroImage(
+                    "https://i.pinimg.com/736x/5e/f0/42/5ef04287e416a0fa534a696a3f657429.jpg"
+                  );
+                }}
                 className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
               >
                 analog reverie
