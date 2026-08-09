@@ -24,7 +24,7 @@ export default function Home() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const [activeModal, setActiveModal] = useState<ModalType>(null);
   const [heroImage, setHeroImage] = useState<string>(
-    "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
+    "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
   );
 
   // Close modal on Escape key press
@@ -107,12 +107,12 @@ export default function Home() {
             <button
               onMouseEnter={() => {
                 setHeroImage(
-                  "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
+                  "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
                 );
               }}
               onClick={() => {
                 setHeroImage(
-                  "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
+                  "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
                 );
               }}
               className="text-xs sm:text-[13px] font-semibold text-neutral-400 hover:text-white mb-2 tracking-tight transition-colors cursor-pointer text-left focus:outline-none"
@@ -124,12 +124,12 @@ export default function Home() {
               <button
                 onMouseEnter={() => {
                   setHeroImage(
-                    "https://i.pinimg.com/736x/1b/94/7f/1b947fa55f81f43a186e7583c193ae16.jpg"
+                    "https://i.pinimg.com/1200x/5c/4e/b2/5c4eb287df7af50c4428d9a46e1cd939.jpg"
                   );
                 }}
                 onClick={() => {
                   setHeroImage(
-                    "https://i.pinimg.com/736x/1b/94/7f/1b947fa55f81f43a186e7583c193ae16.jpg"
+                    "https://i.pinimg.com/1200x/5c/4e/b2/5c4eb287df7af50c4428d9a46e1cd939.jpg"
                   );
                 }}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
@@ -140,7 +140,7 @@ export default function Home() {
                 href="/fretctrl"
                 onMouseEnter={() => {
                   setHeroImage(
-                    "https://i.pinimg.com/1200x/cf/74/01/cf7401b52f90708569cbfaae9b36cf61.jpg"
+                    "https://i.pinimg.com/1200x/4a/75/f2/4a75f294b16d1fa8471f6e365ffb80e1.jpg"
                   );
                 }}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
@@ -172,7 +172,7 @@ export default function Home() {
               <button
                 onMouseEnter={() => {
                   setHeroImage(
-                    "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
+                    "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
                   );
                 }}
                 onClick={() => setActiveModal("projects")}
@@ -183,7 +183,7 @@ export default function Home() {
               <button
                 onMouseEnter={() => {
                   setHeroImage(
-                    "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
+                    "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
                   );
                 }}
                 onClick={() => setActiveModal("whoiam")}
@@ -194,7 +194,7 @@ export default function Home() {
               <button
                 onMouseEnter={() => {
                   setHeroImage(
-                    "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
+                    "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
                   );
                 }}
                 onClick={() => setActiveModal("projects")}

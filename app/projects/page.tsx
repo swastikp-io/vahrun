@@ -16,7 +16,7 @@ export default function ProjectsPage() {
       id: "fretctrl",
       title: "fretctrl [under development]",
       category: "web",
-      image: "https://i.pinimg.com/1200x/cf/74/01/cf7401b52f90708569cbfaae9b36cf61.jpg",
+      image: "https://i.pinimg.com/1200x/4a/75/f2/4a75f294b16d1fa8471f6e365ffb80e1.jpg",
       video: null,
       href: "/fretctrl",
       isExternal: false,
@@ -51,18 +51,18 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <div className="min-h-screen w-full bg-white text-neutral-900 flex flex-col justify-between p-4 sm:p-6 lg:p-10 pb-24 sm:pb-32 font-sans select-none overflow-y-auto no-scrollbar">
+    <div className="min-h-screen w-full bg-black text-neutral-100 flex flex-col justify-between p-4 sm:p-6 lg:p-10 pb-24 sm:pb-32 font-sans select-none overflow-y-auto no-scrollbar">
       {/* Top Header Bar */}
       <header className="w-full flex justify-between items-center pb-6 sm:pb-8 flex-shrink-0">
         <Link
           href="/"
-          className="text-lg sm:text-xl font-bold tracking-tight text-black hover:text-neutral-600 transition-colors select-text"
+          className="text-lg sm:text-xl font-bold tracking-tight text-white hover:text-neutral-400 transition-colors select-text"
         >
           vahrun.com
         </Link>
         <Link
           href="/"
-          className="text-xs font-mono uppercase tracking-wider text-neutral-500 hover:text-black transition-colors border border-neutral-300 hover:border-black px-2.5 py-1"
+          className="text-xs font-mono uppercase tracking-wider text-neutral-400 hover:text-white transition-colors border border-neutral-800 hover:border-white px-2.5 py-1"
         >
           &larr; back to home
         </Link>
@@ -72,7 +72,7 @@ export default function ProjectsPage() {
       <main className="flex-1 w-full flex flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 py-2">
         {/* Left Column: Section Tag */}
         <div className="w-full lg:w-[12%] flex-shrink-0">
-          <span className="text-xs sm:text-sm font-mono text-neutral-400 block pt-1">
+          <span className="text-xs sm:text-sm font-mono text-neutral-500 block pt-1">
             /projects
           </span>
         </div>
@@ -80,7 +80,7 @@ export default function ProjectsPage() {
         {/* Middle Column: Headline & 2x2 Grid Matching Reference Image */}
         <div className="flex-1 space-y-6 max-w-4xl select-text">
           {/* Main Headline */}
-          <h1 className="text-xl sm:text-2xl md:text-[26px] font-normal text-neutral-900 tracking-tight leading-relaxed">
+          <h1 className="text-xl sm:text-2xl md:text-[26px] font-normal text-white tracking-tight leading-relaxed">
             A list of projects, apps, and websites that I’ve worked on
           </h1>
 
@@ -90,7 +90,7 @@ export default function ProjectsPage() {
               const CardContent = (
                 <div className="group cursor-pointer flex flex-col">
                   {/* Aspect-Ratio Preview Container */}
-                  <div className="w-full aspect-[4/3] bg-neutral-100 overflow-hidden relative border border-neutral-200 shadow-xs group-hover:shadow-md transition-shadow">
+                  <div className="w-full aspect-[4/3] bg-neutral-900 overflow-hidden relative border border-neutral-800 shadow-xs group-hover:shadow-md transition-shadow">
                     {item.video ? (
                       <video
                         src={item.video}
@@ -111,11 +111,11 @@ export default function ProjectsPage() {
 
                   {/* Card Title & Category Label Row */}
                   <div className="flex items-center gap-2 pt-2.5 text-sm sm:text-[15px]">
-                    <span className="font-semibold text-black group-hover:underline underline-offset-4">
+                    <span className="font-semibold text-white group-hover:underline underline-offset-4">
                       {item.title}
                     </span>
-                    <span className="text-neutral-400 font-mono">/</span>
-                    <span className="text-neutral-500 font-mono text-xs sm:text-sm">
+                    <span className="text-neutral-500 font-mono">/</span>
+                    <span className="text-neutral-400 font-mono text-xs sm:text-sm">
                       {item.category}
                     </span>
                   </div>
@@ -143,8 +143,17 @@ export default function ProjectsPage() {
 
         {/* Right Column: Freelance & Contact Copy */}
         <div className="w-full lg:w-[280px] xl:w-[320px] flex-shrink-0 pt-1 lg:pt-2 pb-12 sm:pb-20 select-text">
-          <p className="text-[15px] sm:text-[16px] leading-[1.65] text-neutral-800 font-normal">
-            Currently open to freelance web + product work. I’m a full stack developer who can design, develop, and ship products with empathy for users. Email me if you’d like to chat.
+          <p className="text-[15px] sm:text-[16px] leading-[1.65] text-neutral-300 font-normal">
+            Currently open to freelance work across web development, design, video editing, and music production. I build and ship full-stack products, create visual content, edit videos, and produce music. If you’re working on something interesting,{" "}
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=music.swastikpatel@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 font-medium text-white hover:text-neutral-300 transition-colors"
+            >
+              email
+            </a>{" "}
+            me and let’s talk.
           </p>
         </div>
       </main>

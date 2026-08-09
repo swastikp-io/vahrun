@@ -156,18 +156,16 @@ export default function AboutPage() {
             </div>
             <div className="flex-1 text-[15.5px] sm:text-[17px] leading-[1.65] text-neutral-300 font-normal max-w-xl">
               <p>
-                Currently open to freelance web + product work & sound design. I’m a
-                full stack web developer and creative developer who can design, develop, and ship
-                products with strong empathy for users.{" "}
+                Currently open to freelance work across web development, design, video editing, and music production. I build and ship full-stack products, create visual content, edit videos, and produce music. If you’re working on something interesting,{" "}
                 <a
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=music.swastikpatel@gmail.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline underline-offset-4 font-medium text-white hover:text-neutral-300 transition-colors"
                 >
-                  Email
+                  email
                 </a>{" "}
-                me if you’d like to chat.
+                me and let’s talk.
               </p>
             </div>
           </div>
@@ -178,7 +176,7 @@ export default function AboutPage() {
           {/* Portrait Photo */}
           <div className="w-full h-[220px] sm:h-[260px] lg:h-[240px] bg-neutral-900 overflow-hidden relative border border-neutral-800">
             <img
-              src="https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
+              src="https://i.pinimg.com/1200x/3b/e9/02/3be9022148ed3658d76267366a1e8694.jpg"
               alt="vahrun"
               className="w-full h-full object-cover block"
             />
