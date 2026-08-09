@@ -57,7 +57,7 @@ export default function AboutPage() {
       audioRef.current
         .play()
         .then(() => setIsPlaying(true))
-        .catch(() => {});
+        .catch(() => { });
     }
   };
 
@@ -119,13 +119,12 @@ export default function AboutPage() {
               <p>
                 Hi! My name is vahrun – welcome to my corner of the internet. I’m a
                 music producer and creative developer living in Lucknow, India. I make
-                electronic, soundscape, and textured music. Previously, I’ve worked on
-                audio software R&D, synth hardware prototypes, and web design engineering.
+                electronic, soundscape, and textured music.
               </p>
               <p>
                 I spend most of my time creating stuff. When I’m not doing that, I go on
                 walks, journal, experiment with modular synth cables, cook, and listen to
-                music (lately: aphex twin, burial, james blake, brian eno, mac miller).
+                music (lately: OAFF, sudan, Fred again..., demotapes and many more).
                 Born and raised in Lucknow.
               </p>
             </div>
@@ -137,16 +136,16 @@ export default function AboutPage() {
               <span>my interests</span>
             </div>
             <div className="flex-1 space-y-1.5 text-[15.5px] sm:text-[17px] text-neutral-300 font-normal">
-              <p className="underline underline-offset-4 font-medium text-white">
+              <p>
                 music production
               </p>
               <p>web development</p>
               <p>sound design</p>
-              <p>hardware synthesis</p>
+
               <p>interface design</p>
               <p>journaling</p>
               <p>graphic design</p>
-              <p>photography</p>
+
             </div>
           </div>
 
