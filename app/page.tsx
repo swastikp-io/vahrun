@@ -104,21 +104,17 @@ export default function Home() {
 
           {/* Bottom Section: things change list */}
           <div className="mt-4 sm:mt-6 pt-2">
-            <button
+            <Link
+              href="/creative-discipline"
               onMouseEnter={() => {
                 setHeroImage(
                   "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
                 );
               }}
-              onClick={() => {
-                setHeroImage(
-                  "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
-                );
-              }}
-              className="text-xs sm:text-[13px] font-semibold text-neutral-400 hover:text-white mb-2 tracking-tight transition-colors cursor-pointer text-left focus:outline-none"
+              className="text-xs sm:text-[13px] font-semibold text-neutral-400 hover:text-white mb-2 tracking-tight transition-colors cursor-pointer text-left focus:outline-none block"
             >
-              things change
-            </button>
+              i don't think i have one creative discipline
+            </Link>
 
             <div className="flex flex-col gap-1.5 sm:gap-1 text-sm sm:text-[15px] text-neutral-500">
               <button
