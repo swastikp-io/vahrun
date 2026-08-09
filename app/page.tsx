@@ -21,6 +21,7 @@ type ModalType =
   | null;
 
 export default function Home() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const [activeModal, setActiveModal] = useState<ModalType>(null);
   const [heroImage, setHeroImage] = useState<string>(
     "https://i.pinimg.com/736x/ba/51/89/ba518964022bf237fa6123e3abb280cf.jpg"
@@ -131,16 +132,17 @@ export default function Home() {
               >
                 fretctrl
               </Link>
-              <button
-                onClick={() => {
+              <a
+                href={`${basePath}/analogreverie`}
+                onMouseEnter={() => {
                   setHeroImage(
                     "https://i.pinimg.com/736x/5e/f0/42/5ef04287e416a0fa534a696a3f657429.jpg"
                   );
                 }}
-                className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"
+                className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer block"
               >
                 analog reverie
-              </button>
+              </a>
               <button
                 onClick={() => setActiveModal("projects")}
                 className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer"

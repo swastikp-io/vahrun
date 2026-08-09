@@ -36,8 +36,8 @@ export default function ProjectsPage() {
       category: "web",
       image: "https://i.pinimg.com/736x/5e/f0/42/5ef04287e416a0fa534a696a3f657429.jpg",
       video: null,
-      href: "/",
-      isExternal: false,
+      href: `${basePath}/projects/analogreverie`,
+      isExternal: true,
     },
     {
       id: "motion-visualizer",
@@ -122,12 +122,13 @@ export default function ProjectsPage() {
                 </div>
               );
 
+              const isHttp = item.href.startsWith("http://") || item.href.startsWith("https://");
               return item.isExternal ? (
                 <a
                   key={item.id}
                   href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={isHttp ? "_blank" : "_self"}
+                  rel={isHttp ? "noopener noreferrer" : undefined}
                 >
                   {CardContent}
                 </a>
