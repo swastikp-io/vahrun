@@ -226,7 +226,7 @@ main {
 
   .archive-gallery {
     gap: clamp(10px, 1.8vw, 18px);
-    max-height: 44vh;
+    height: auto;
   }
 
   .archive-description {
@@ -238,26 +238,32 @@ main {
 @media (max-width: 640px) {
   .archive-container {
     min-height: auto;
-    padding-top: 32px;
-    padding-bottom: 40px;
+    padding-top: 24px;
+    padding-bottom: 36px;
   }
 
   .archive-header {
-    margin-bottom: 18px;
+    margin-bottom: 24px;
+  }
+
+  .archive-nav {
+    margin-bottom: 16px;
   }
 
   .archive-title {
-    font-size: clamp(2rem, 11vw, 3.5rem);
+    font-size: clamp(2.2rem, 10.5vw, 3.4rem);
     letter-spacing: -0.03em;
+    line-height: 1.1;
   }
 
   .archive-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    align-items: stretch;
-    gap: 10px;
+    gap: 12px;
+    height: auto;
     max-height: none;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
+    align-items: center;
   }
 
   .archive-item--1,
@@ -265,31 +271,31 @@ main {
   .archive-item--3,
   .archive-item--4 {
     max-width: 100%;
+    width: 100%;
     flex: none;
-  }
-
-  .archive-item--1 {
-    aspect-ratio: 0.85;
-  }
-
-  .archive-item--2 {
-    aspect-ratio: 0.72;
-  }
-
-  .archive-item--3 {
-    aspect-ratio: 0.85;
-  }
-
-  .archive-item--4 {
-    aspect-ratio: 1.15;
+    aspect-ratio: 4 / 5;
+    height: auto;
   }
 
   .archive-description {
-    font-size: 13px;
+    font-size: 14px;
     white-space: normal;
+    line-height: 1.45;
+    padding: 0 8px;
   }
 
   .about-section {
-    padding: 60px var(--page-padding) 80px;
+    padding: 48px var(--page-padding) 64px;
+  }
+
+  .about-title {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+  }
+
+  .about-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.2em;
   }
 }
