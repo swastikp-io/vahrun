@@ -34,7 +34,7 @@ export default function ProjectsPage() {
       id: "analog-reverie",
       title: "analog reverie",
       category: "web",
-      image: "https://i.pinimg.com/736x/5e/f0/42/5ef04287e416a0fa534a696a3f657429.jpg",
+      image: `${basePath}/Screenshot%202026-08-09%20081809.png`,
       video: null,
       href: `${basePath}/projects/analogreverie`,
       isExternal: true,

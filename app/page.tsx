@@ -136,7 +136,7 @@ export default function Home() {
                 href={`${basePath}/analogreverie`}
                 onMouseEnter={() => {
                   setHeroImage(
-                    "https://i.pinimg.com/736x/5e/f0/42/5ef04287e416a0fa534a696a3f657429.jpg"
+                    `${basePath}/Screenshot%202026-08-09%20081809.png`
                   );
                 }}
                 className="text-left hover:text-neutral-900 transition-colors focus:outline-none cursor-pointer block"
