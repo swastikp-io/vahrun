@@ -198,17 +198,17 @@ export default function Home() {
               >
                 gumroad audio presets
               </button>
-              <button
+              <Link
+                href="/work-with-me"
                 onMouseEnter={() => {
                   setHeroImage(
                     "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/13/5f/91/135f918d-0515-fb9f-b4f8-97c0989daee9/199538692631.jpg/592x592bb.webp"
                   );
                 }}
-                onClick={() => setActiveModal("music")}
-                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
+                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer block"
               >
-                motion visualizer works
-              </button>
+                work with me
+              </Link>
             </div>
           </div>
         </div>

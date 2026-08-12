@@ -40,12 +40,12 @@ export default function ProjectsPage() {
       isExternal: true,
     },
     {
-      id: "motion-visualizer",
-      title: "motion visualizer works",
+      id: "work-with-me",
+      title: "work with me",
       category: "web",
       image: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/13/5f/91/135f918d-0515-fb9f-b4f8-97c0989daee9/199538692631.jpg/592x592bb.webp",
       video: null,
-      href: "/",
+      href: "/work-with-me",
       isExternal: false,
     },
   ];
