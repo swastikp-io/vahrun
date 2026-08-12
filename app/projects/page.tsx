@@ -43,7 +43,7 @@ export default function ProjectsPage() {
       id: "work-with-me",
       title: "work with me",
       category: "web",
-      image: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/13/5f/91/135f918d-0515-fb9f-b4f8-97c0989daee9/199538692631.jpg/592x592bb.webp",
+      image: "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg",
       video: null,
       href: "/work-with-me",
       isExternal: false,

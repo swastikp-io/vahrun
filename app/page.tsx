@@ -85,12 +85,12 @@ export default function Home() {
                 learn about me
               </Link>
               ,{" "}
-              <button
-                onClick={() => setActiveModal("plotting")}
+              <Link
+                href="/working-on"
                 className="underline underline-offset-4 font-normal text-white hover:text-neutral-400 focus:outline-none cursor-pointer"
               >
                 see what I’m working on
-              </button>
+              </Link>
               , or{" "}
               <button
                 onClick={() => setActiveModal("archives")}
@@ -202,7 +202,7 @@ export default function Home() {
                 href="/work-with-me"
                 onMouseEnter={() => {
                   setHeroImage(
-                    "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/13/5f/91/135f918d-0515-fb9f-b4f8-97c0989daee9/199538692631.jpg/592x592bb.webp"
+                    "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
                   );
                 }}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer block"
