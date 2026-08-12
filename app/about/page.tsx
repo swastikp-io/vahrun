@@ -117,14 +117,15 @@ export default function AboutPage() {
             </div>
             <div className="flex-1 space-y-4 text-[15.5px] sm:text-[17px] leading-[1.65] text-neutral-300 font-normal">
               <p>
-                Hi! My name is vahrun – welcome to my corner of the internet. I’m a
-                music producer and creative developer living in Lucknow, India. I make
-                electronic, soundscape, and textured music.
+                Hi! My name is Swastik — I make music under the name Vahrun.
+
+                Welcome to my corner of the internet. Swastik is the name behind the development,
+                design, and things I build. Vahrun is the name I use for music — the part of my
+                work that revolves around sound, songwriting, production, and experimentation.
               </p>
               <p>
                 I spend most of my time creating stuff. When I’m not doing that, I go on
-                walks, journal, experiment with modular synth cables, cook, and listen to
-                music (lately: OAFF, sudan, Fred again..., demotapes and many more).
+                walks, journal, cook, and listen to music (lately: OAFF, sudan, Fred again..., demotapes and many more).
                 Born and raised in Lucknow.
               </p>
             </div>
@@ -142,7 +143,7 @@ export default function AboutPage() {
               <p>web development</p>
               <p>sound design</p>
 
-              <p>interface design</p>
+
               <p>journaling</p>
               <p>graphic design</p>
 
