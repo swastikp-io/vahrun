@@ -28,13 +28,6 @@ export interface PlottingItem {
   expectedDate?: string;
 }
 
-export interface ArchiveItem {
-  id: string;
-  title: string;
-  year: string;
-  category: string;
-  description: string;
-}
 
 export const VAHRUN_BIO = {
   name: "vahrun",
@@ -65,12 +58,12 @@ export const VAHRUN_BIO = {
 export const PROJECTS: ProjectItem[] = [
   {
     id: "p1",
-    title: "Handling Anti-Performance",
-    type: "music",
-    description: "Latest single release exploring raw textures and driving basslines.",
+    title: "room - reimagine your new tab",
+    type: "product",
+    description: "A browser extension that replaces your default new tab page with a calm, ad-free stream of images.",
     year: "2024",
-    link: "https://open.spotify.com/artist/2tRx1njcfoGrTaDPPNj5OK?si=212e8765f5914493",
-    linkLabel: "Listen on Spotify",
+    link: "/room",
+    linkLabel: "View Project",
   },
   {
     id: "p2",
@@ -125,26 +118,3 @@ export const PLOTTING_ITEMS: PlottingItem[] = [
   },
 ];
 
-export const ARCHIVE_ITEMS: ArchiveItem[] = [
-  {
-    id: "arc-1",
-    title: "Analog Reverie (2018 Demo)",
-    year: "2018",
-    category: "Audio Archive",
-    description: "Early experimental analog synth sessions recorded on 4-track tape.",
-  },
-  {
-    id: "arc-2",
-    title: "Warehouse Studio Session Photos",
-    year: "2023",
-    category: "Photography Archive",
-    description: "Visual documentation of modular synthesizer rig and pedalboard setup in Lucknow.",
-  },
-  {
-    id: "arc-3",
-    title: "Early UI & Audio Plugin Concepts",
-    year: "2022",
-    category: "Design Engineering Archive",
-    description: "Figma wireframes and DSP prototype sketches for audio manipulation interfaces.",
-  },
-];

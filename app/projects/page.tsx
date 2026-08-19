@@ -40,12 +40,12 @@ export default function ProjectsPage() {
       isExternal: true,
     },
     {
-      id: "work-with-me",
-      title: "work with me",
+      id: "room",
+      title: "room - reimagine your new tab",
       category: "web",
-      image: "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg",
-      video: null,
-      href: "/work-with-me",
+      image: "https://i.pinimg.com/1200x/5c/4e/b2/5c4eb287df7af50c4428d9a46e1cd939.jpg",
+      video: `${basePath}/room.mp4`,
+      href: "/room",
       isExternal: false,
     },
   ];

@@ -6,17 +6,14 @@ import {
   VAHRUN_BIO,
   PROJECTS,
   PLOTTING_ITEMS,
-  ARCHIVE_ITEMS,
 } from "@/data/portfolioData";
 
 type ModalType =
   | "projects"
   | "whoiam"
   | "plotting"
-  | "archives"
   | "now"
   | "music"
-  | "prev"
   | "posts"
   | null;
 
@@ -84,20 +81,13 @@ export default function Home() {
               >
                 learn about me
               </Link>
-              ,{" "}
+              , or{" "}
               <Link
                 href="/working-on"
                 className="underline underline-offset-4 font-normal text-white hover:text-neutral-400 focus:outline-none cursor-pointer"
               >
                 see what I’m working on
               </Link>
-              , or{" "}
-              <button
-                onClick={() => setActiveModal("archives")}
-                className="underline underline-offset-4 font-normal text-white hover:text-neutral-400 focus:outline-none cursor-pointer"
-              >
-                browse the archives
-              </button>
               .
             </p>
           </div>
@@ -117,21 +107,17 @@ export default function Home() {
             </Link>
 
             <div className="flex flex-col gap-1.5 sm:gap-1 text-sm sm:text-[15px] text-neutral-500">
-              <button
+              <Link
+                href="/room"
                 onMouseEnter={() => {
                   setHeroImage(
-                    "https://i.pinimg.com/1200x/5c/4e/b2/5c4eb287df7af50c4428d9a46e1cd939.jpg"
+                    "/room.png"
                   );
                 }}
-                onClick={() => {
-                  setHeroImage(
-                    "https://i.pinimg.com/1200x/5c/4e/b2/5c4eb287df7af50c4428d9a46e1cd939.jpg"
-                  );
-                }}
-                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
+                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer block"
               >
-                handling anti-performance
-              </button>
+                room - reimagine your new tab
+              </Link>
               <Link
                 href="/fretctrl"
                 onMouseEnter={() => {
@@ -144,7 +130,7 @@ export default function Home() {
                 fretctrl [under development]
               </Link>
               <a
-                href={`${basePath}/analogreverie`}
+                href={`${basePath}/projects/analogreverie`}
                 onMouseEnter={() => {
                   setHeroImage(
                     "https://i.pinimg.com/736x/7c/8f/a1/7c8fa12a9fe579157638a5909b68b927.jpg"
@@ -232,8 +218,6 @@ export default function Home() {
                   "[ about & bio ]"}
                 {(activeModal === "plotting" || activeModal === "now") &&
                   "[ now / up to ]"}
-                {(activeModal === "archives" || activeModal === "prev") &&
-                  "[ archives / was up to ]"}
                 {activeModal === "music" && "[ music & releases ]"}
               </h2>
               <button
@@ -432,28 +416,6 @@ export default function Home() {
               </div>
             )}
 
-            {/* Modal Content - Archives / Prev */}
-            {(activeModal === "archives" || activeModal === "prev") && (
-              <div className="space-y-6">
-                <p className="text-sm text-neutral-400">
-                  Explorations from previous years, tape demos, and studio archives:
-                </p>
-                <div className="divide-y divide-neutral-800">
-                  {ARCHIVE_ITEMS.map((item) => (
-                    <div key={item.id} className="py-4 first:pt-0 last:pb-0 space-y-1">
-                      <div className="flex items-center justify-between">
-                        <h3 className="font-semibold text-white">{item.title}</h3>
-                        <span className="text-xs font-mono text-neutral-500">{item.year}</span>
-                      </div>
-                      <span className="text-[11px] font-mono uppercase text-neutral-400 block">
-                        {item.category}
-                      </span>
-                      <p className="text-sm text-neutral-400 pt-0.5">{item.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </div>
       )}

@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "node scripts/sync-analog-reverie.js",
-    "prebuild": "node scripts/sync-analog-reverie.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

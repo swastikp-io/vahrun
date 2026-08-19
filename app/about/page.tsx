@@ -117,10 +117,10 @@ export default function AboutPage() {
             </div>
             <div className="flex-1 space-y-4 text-[15.5px] sm:text-[17px] leading-[1.65] text-neutral-300 font-normal">
               <p>
-                Hi! My name is Swastik — I make music under the name Vahrun.
+                Hi! My name is Swastik — I make music under the name vahrun.
 
                 Welcome to my corner of the internet. Swastik is the name behind the development,
-                design, and things I build. Vahrun is the name I use for music — the part of my
+                design, and things I build. vahrun is the name I use for music — the part of my
                 work that revolves around sound, songwriting, production, and experimentation.
               </p>
               <p>
