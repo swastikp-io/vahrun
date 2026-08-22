@@ -61,6 +61,21 @@ export default function RoomPage() {
                 <p>
                   if you're bored from your classic google new tab then room is something you should try.
                 </p>
+
+                <p className="pt-2">
+                  <a
+                    href="https://www.dropbox.com/scl/fo/2k3ta5n8hbadaf9wifgmo/ALbsEVpNhAiK8kRbBx7mSnw?rlkey=hbo8i3crw8paqz8znawb6efs6&st=qra8l1ye&dl=0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-4 text-white hover:text-neutral-400 transition-colors"
+                  >
+                    Download the extension from here
+                  </a>
+                </p>
+
+                <p className="text-neutral-400 text-sm">
+                  Don't worry the extension is completely safe to download
+                </p>
               </div>
             </div>
           </div>
