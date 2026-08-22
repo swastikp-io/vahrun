@@ -1,9 +1,14 @@
 import React from "react";
 import Link from "next/link";
+import { PixelImageTrail } from "@/components/ui/pixel-image-trail";
 
 export default function WorkingOnPage() {
   return (
-    <div className="min-h-screen w-full bg-black text-neutral-100 flex flex-col justify-between p-4 sm:p-6 lg:p-10 pb-24 sm:pb-32 font-sans select-none overflow-y-auto no-scrollbar">
+    <PixelImageTrail
+      src="https://i.pinimg.com/736x/71/35/f8/7135f800bd4e85ec60ef8f24f4b229a0.jpg"
+      alt="Working on pixel trail background"
+      className="min-h-screen w-full bg-black text-neutral-100 flex flex-col justify-between p-4 sm:p-6 lg:p-10 pb-24 sm:pb-32 font-sans select-none overflow-y-auto no-scrollbar"
+    >
       {/* Top Header Bar */}
       <header className="w-full flex justify-between items-center pb-6 sm:pb-8 flex-shrink-0">
         <Link
@@ -41,6 +46,6 @@ export default function WorkingOnPage() {
           </div>
         </div>
       </main>
-    </div>
+    </PixelImageTrail>
   );
 }

@@ -20,9 +20,9 @@ type ModalType =
 export default function Home() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const [activeModal, setActiveModal] = useState<ModalType>(null);
-  const [heroImage, setHeroImage] = useState<string>(
-    "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
-  );
+  const SINGLE_IMAGE =
+    "https://i.pinimg.com/736x/69/49/3b/69493bc51021959a873cc3eba040f2ae.jpg";
+  const [heroImage, setHeroImage] = useState<string>(SINGLE_IMAGE);
 
   // Close modal on Escape key press
   useEffect(() => {
@@ -97,9 +97,7 @@ export default function Home() {
             <Link
               href="/creative-discipline"
               onMouseEnter={() => {
-                setHeroImage(
-                  "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
-                );
+                setHeroImage(SINGLE_IMAGE);
               }}
               className="text-xs sm:text-[13px] font-semibold text-neutral-400 hover:text-white mb-2 tracking-tight transition-colors cursor-pointer text-left focus:outline-none block"
             >
@@ -110,9 +108,7 @@ export default function Home() {
               <Link
                 href="/room"
                 onMouseEnter={() => {
-                  setHeroImage(
-                    "/room.png"
-                  );
+                  setHeroImage(SINGLE_IMAGE);
                 }}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer block"
               >
@@ -121,9 +117,7 @@ export default function Home() {
               <Link
                 href="/fretctrl"
                 onMouseEnter={() => {
-                  setHeroImage(
-                    "https://i.pinimg.com/1200x/4a/75/f2/4a75f294b16d1fa8471f6e365ffb80e1.jpg"
-                  );
+                  setHeroImage(SINGLE_IMAGE);
                 }}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
               >
@@ -132,9 +126,7 @@ export default function Home() {
               <a
                 href={`${basePath}/projects/analogreverie`}
                 onMouseEnter={() => {
-                  setHeroImage(
-                    "https://i.pinimg.com/736x/7c/8f/a1/7c8fa12a9fe579157638a5909b68b927.jpg"
-                  );
+                  setHeroImage(SINGLE_IMAGE);
                 }}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer block"
               >
@@ -142,9 +134,7 @@ export default function Home() {
               </a>
               <button
                 onMouseEnter={() => {
-                  setHeroImage(
-                    "https://i.pinimg.com/736x/1b/94/7f/1b947fa55f81f43a186e7583c193ae16.jpg"
-                  );
+                  setHeroImage(SINGLE_IMAGE);
                 }}
                 onClick={() => setActiveModal("projects")}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
@@ -153,9 +143,7 @@ export default function Home() {
               </button>
               <button
                 onMouseEnter={() => {
-                  setHeroImage(
-                    "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
-                  );
+                  setHeroImage(SINGLE_IMAGE);
                 }}
                 onClick={() => setActiveModal("projects")}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
@@ -164,9 +152,7 @@ export default function Home() {
               </button>
               <button
                 onMouseEnter={() => {
-                  setHeroImage(
-                    "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
-                  );
+                  setHeroImage(SINGLE_IMAGE);
                 }}
                 onClick={() => setActiveModal("whoiam")}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
@@ -175,9 +161,7 @@ export default function Home() {
               </button>
               <button
                 onMouseEnter={() => {
-                  setHeroImage(
-                    "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
-                  );
+                  setHeroImage(SINGLE_IMAGE);
                 }}
                 onClick={() => setActiveModal("projects")}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
@@ -187,9 +171,7 @@ export default function Home() {
               <Link
                 href="/work-with-me"
                 onMouseEnter={() => {
-                  setHeroImage(
-                    "https://i.pinimg.com/736x/1a/a0/18/1aa018341e5c78fa24b40a0fcdcfe7c9.jpg"
-                  );
+                  setHeroImage(SINGLE_IMAGE);
                 }}
                 className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer block"
               >
