@@ -20,8 +20,7 @@ type ModalType =
 export default function Home() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const [activeModal, setActiveModal] = useState<ModalType>(null);
-  const SINGLE_IMAGE =
-    "https://i.pinimg.com/736x/69/49/3b/69493bc51021959a873cc3eba040f2ae.jpg";
+  const SINGLE_IMAGE = `${basePath}/Artboard2.png`;
   const [heroImage, setHeroImage] = useState<string>(SINGLE_IMAGE);
 
   // Close modal on Escape key press
@@ -67,12 +66,12 @@ export default function Home() {
 
             {/* Paragraph with inline underlined links */}
             <p className="text-[15px] sm:text-[16px] md:text-[17px] leading-[1.55] text-neutral-300 font-normal">
-              Explore{" "}
+              Listen to{" "}
               <Link
-                href="/projects"
+                href="/music"
                 className="underline underline-offset-4 font-normal text-white hover:text-neutral-400 focus:outline-none cursor-pointer"
               >
-                my projects
+                my music
               </Link>
               ,{" "}
               <Link
@@ -92,92 +91,27 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Bottom Section: things change list */}
-          <div className="mt-4 sm:mt-6 pt-2">
+          {/* Bottom Section: list */}
+          <div className="mt-4 sm:mt-6 pt-2 flex flex-col gap-2">
             <Link
               href="/creative-discipline"
               onMouseEnter={() => {
                 setHeroImage(SINGLE_IMAGE);
               }}
-              className="text-xs sm:text-[13px] font-semibold text-neutral-400 hover:text-white mb-2 tracking-tight transition-colors cursor-pointer text-left focus:outline-none block"
+              className="text-xs sm:text-[13px] font-semibold text-neutral-400 hover:text-white tracking-tight transition-colors cursor-pointer text-left focus:outline-none block"
             >
               i don't think i have one creative discipline
             </Link>
 
-            <div className="flex flex-col gap-1.5 sm:gap-1 text-sm sm:text-[15px] text-neutral-500">
-              <Link
-                href="/room"
-                onMouseEnter={() => {
-                  setHeroImage(SINGLE_IMAGE);
-                }}
-                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer block"
-              >
-                room - reimagine your new tab
-              </Link>
-              <Link
-                href="/fretctrl"
-                onMouseEnter={() => {
-                  setHeroImage(SINGLE_IMAGE);
-                }}
-                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
-              >
-                fretctrl [under development]
-              </Link>
-              <a
-                href={`${basePath}/projects/analogreverie`}
-                onMouseEnter={() => {
-                  setHeroImage(SINGLE_IMAGE);
-                }}
-                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer block"
-              >
-                analog reverie
-              </a>
-              <button
-                onMouseEnter={() => {
-                  setHeroImage(SINGLE_IMAGE);
-                }}
-                onClick={() => setActiveModal("projects")}
-                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
-              >
-                soundscapes ep
-              </button>
-              <button
-                onMouseEnter={() => {
-                  setHeroImage(SINGLE_IMAGE);
-                }}
-                onClick={() => setActiveModal("projects")}
-                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
-              >
-                custom tactile midi controller
-              </button>
-              <button
-                onMouseEnter={() => {
-                  setHeroImage(SINGLE_IMAGE);
-                }}
-                onClick={() => setActiveModal("whoiam")}
-                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
-              >
-                sound design & hardware r&d
-              </button>
-              <button
-                onMouseEnter={() => {
-                  setHeroImage(SINGLE_IMAGE);
-                }}
-                onClick={() => setActiveModal("projects")}
-                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer"
-              >
-                gumroad audio presets
-              </button>
-              <Link
-                href="/work-with-me"
-                onMouseEnter={() => {
-                  setHeroImage(SINGLE_IMAGE);
-                }}
-                className="text-left hover:text-white transition-colors focus:outline-none cursor-pointer block"
-              >
-                work with me
-              </Link>
-            </div>
+            <Link
+              href="/work-with-me"
+              onMouseEnter={() => {
+                setHeroImage(SINGLE_IMAGE);
+              }}
+              className="text-xs sm:text-[13px] font-semibold text-neutral-400 hover:text-white tracking-tight transition-colors cursor-pointer text-left focus:outline-none block"
+            >
+              work with me
+            </Link>
           </div>
         </div>
       </main>
