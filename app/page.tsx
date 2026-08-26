@@ -104,6 +104,16 @@ export default function Home() {
             </Link>
 
             <Link
+              href="/betweenseasons"
+              onMouseEnter={() => {
+                setHeroImage(SINGLE_IMAGE);
+              }}
+              className="text-xs sm:text-[13px] font-semibold text-neutral-400 hover:text-white tracking-tight transition-colors cursor-pointer text-left focus:outline-none block"
+            >
+              betweenseasons
+            </Link>
+
+            <Link
               href="/work-with-me"
               onMouseEnter={() => {
                 setHeroImage(SINGLE_IMAGE);
