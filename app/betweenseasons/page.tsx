@@ -61,7 +61,7 @@ export default function BetweenSeasonsPage() {
 
           <div className="pt-4">
             <img
-              src="/OMS-CoverArt.png"
+              src="/OMS-CoverArt.jpg"
               alt="betweenseasons artwork"
               className="w-full max-w-xl border border-neutral-800 shadow-2xl block"
             />
