@@ -58,6 +58,14 @@ export default function BetweenSeasonsPage() {
           <p>betweenseasons is a place.</p>
 
           <p className="text-white font-medium">music lives here.</p>
+
+          <div className="pt-4">
+            <img
+              src="/first%20post.png"
+              alt="betweenseasons poster"
+              className="w-full max-w-xl rounded-lg border border-neutral-800 shadow-2xl block"
+            />
+          </div>
         </div>
 
         {/* Right Column Spacer */}

@@ -77,6 +77,24 @@ export default function MusicPage() {
             </a>
             .
           </p>
+
+          <div className="mt-8 space-y-6">
+            <img
+              src="https://i.pinimg.com/736x/1f/ad/cb/1fadcbecedc6df3b686af2d449b10354.jpg"
+              alt="music visual 1"
+              className="w-full max-w-xl border border-neutral-800 shadow-2xl block"
+            />
+            <img
+              src="https://i.pinimg.com/736x/67/95/5f/67955fd91ae063ee7306b0ddba461a68.jpg"
+              alt="music visual 2"
+              className="w-full max-w-xl border border-neutral-800 shadow-2xl block"
+            />
+            <img
+              src="https://i.pinimg.com/736x/49/76/3d/49763dd8d2114e6278e600d7121b20dc.jpg"
+              alt="music visual 3"
+              className="w-full max-w-xl border border-neutral-800 shadow-2xl block"
+            />
+          </div>
         </div>
 
         {/* Right Column Spacer */}

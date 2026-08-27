@@ -20,7 +20,8 @@ type ModalType =
 export default function Home() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const [activeModal, setActiveModal] = useState<ModalType>(null);
-  const SINGLE_IMAGE = `${basePath}/Artboard2.png`;
+  const SINGLE_IMAGE =
+    "https://i.pinimg.com/736x/63/7a/4e/637a4e204fb346adcf664f12c258d838.jpg";
   const [heroImage, setHeroImage] = useState<string>(SINGLE_IMAGE);
 
   // Close modal on Escape key press
@@ -94,16 +95,6 @@ export default function Home() {
           {/* Bottom Section: list */}
           <div className="mt-4 sm:mt-6 pt-2 flex flex-col gap-2">
             <Link
-              href="/creative-discipline"
-              onMouseEnter={() => {
-                setHeroImage(SINGLE_IMAGE);
-              }}
-              className="text-xs sm:text-[13px] font-semibold text-neutral-400 hover:text-white tracking-tight transition-colors cursor-pointer text-left focus:outline-none block"
-            >
-              i don't think i have one creative discipline
-            </Link>
-
-            <Link
               href="/betweenseasons"
               onMouseEnter={() => {
                 setHeroImage(SINGLE_IMAGE);
@@ -112,6 +103,15 @@ export default function Home() {
             >
               betweenseasons
             </Link>
+
+            <a
+              href="https://vahrun.bandcamp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs sm:text-[13px] font-semibold text-neutral-400 tracking-tight text-left block"
+            >
+              Bandcamp
+            </a>
 
             <Link
               href="/work-with-me"

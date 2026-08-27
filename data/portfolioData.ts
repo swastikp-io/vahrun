@@ -57,15 +57,6 @@ export const VAHRUN_BIO = {
 
 export const PROJECTS: ProjectItem[] = [
   {
-    id: "p1",
-    title: "room - reimagine your new tab",
-    type: "product",
-    description: "A browser extension that replaces your default new tab page with a calm, ad-free stream of images.",
-    year: "2024",
-    link: "/room",
-    linkLabel: "View Project",
-  },
-  {
     id: "p2",
     title: "Lucknow Nights (Texture Vol. 1)",
     type: "music",
