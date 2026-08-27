@@ -3,6 +3,8 @@
 import React, { useState, useRef } from "react";
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 interface Track {
   title: string;
   artist: string;
@@ -13,8 +15,8 @@ interface Track {
 const TRACK_DATA: Track = {
   title: "one more sunday",
   artist: "vahrun",
-  coverUrl: "/OMS-CoverArt.jpg",
-  audioUrl: "/one more sunday.mp3",
+  coverUrl: `${basePath}/OMS-CoverArt.jpg`,
+  audioUrl: `${basePath}/one%20more%20sunday.mp3`,
 };
 
 export default function SpotifyPlayer() {
@@ -119,7 +121,7 @@ export default function SpotifyPlayer() {
                 alt={TRACK_DATA.title}
                 className="w-11 h-11 sm:w-12 sm:h-12 rounded-none object-cover border border-neutral-800 transition-opacity group-hover:opacity-90"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = "/OMS-CoverArt.png";
+                  (e.target as HTMLImageElement).src = `${basePath}/OMS-CoverArt.png`;
                 }}
               />
             </div>
