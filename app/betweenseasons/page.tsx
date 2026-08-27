@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
+import omsCoverArt from "../../public/OMS-CoverArt.jpg";
 
 export const metadata: Metadata = {
   title: "betweenseasons | vahrun",
@@ -61,7 +62,7 @@ export default function BetweenSeasonsPage() {
 
           <div className="pt-4">
             <img
-              src="/OMS-CoverArt.jpg"
+              src={omsCoverArt.src}
               alt="betweenseasons artwork"
               className="w-full max-w-xl border border-neutral-800 shadow-2xl block"
             />
