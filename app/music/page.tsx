@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
+import SpotifyPlayer from "./components/SpotifyPlayer";
 
 export const metadata: Metadata = {
   title: "music | vahrun",
@@ -36,8 +37,8 @@ export default function MusicPage() {
           </span>
         </div>
 
-        {/* Middle Column: Copy */}
-        <div className="flex-1 max-w-2xl select-text">
+        {/* Middle Column: Copy & Spotify Player */}
+        <div className="flex-1 max-w-3xl select-text">
           <p className="text-[17px] sm:text-[19px] leading-[1.65] text-neutral-200 font-normal">
             My music is scattered around the internet;{" "}
             <a
@@ -82,23 +83,28 @@ export default function MusicPage() {
             <img
               src="https://i.pinimg.com/736x/1f/ad/cb/1fadcbecedc6df3b686af2d449b10354.jpg"
               alt="music visual 1"
-              className="w-full max-w-xl border border-neutral-800 shadow-2xl block"
+              className="w-full max-w-xl border border-neutral-800 shadow-2xl block rounded-none"
             />
             <img
               src="https://i.pinimg.com/736x/67/95/5f/67955fd91ae063ee7306b0ddba461a68.jpg"
               alt="music visual 2"
-              className="w-full max-w-xl border border-neutral-800 shadow-2xl block"
+              className="w-full max-w-xl border border-neutral-800 shadow-2xl block rounded-none"
             />
             <img
               src="https://i.pinimg.com/736x/49/76/3d/49763dd8d2114e6278e600d7121b20dc.jpg"
               alt="music visual 3"
-              className="w-full max-w-xl border border-neutral-800 shadow-2xl block"
+              className="w-full max-w-xl border border-neutral-800 shadow-2xl block rounded-none"
             />
+          </div>
+
+          {/* Featured Music Player moved to bottom of page */}
+          <div className="mt-10">
+            <SpotifyPlayer />
           </div>
         </div>
 
         {/* Right Column Spacer */}
-        <div className="w-full lg:w-[15%] flex-shrink-0 hidden lg:block" />
+        <div className="w-full lg:w-[10%] flex-shrink-0 hidden lg:block" />
       </main>
     </div>
   );
