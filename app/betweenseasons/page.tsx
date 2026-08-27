@@ -61,11 +61,52 @@ export default function BetweenSeasonsPage() {
 
           <div className="pt-4">
             <img
-              src="/first%20post.png"
-              alt="betweenseasons poster"
-              className="w-full max-w-xl rounded-lg border border-neutral-800 shadow-2xl block"
+              src="/OMS-CoverArt.png"
+              alt="betweenseasons artwork"
+              className="w-full max-w-xl border border-neutral-800 shadow-2xl block"
             />
           </div>
+
+          <div className="pt-6 space-y-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              How it started
+            </h2>
+
+            <p>
+              betweenseasons began as a way to put music into the world without putting it into a box.
+            </p>
+
+            <p>
+              What started with our own releases is slowly becoming something larger : a collective of artists, songs, ideas, and people connected by the music they make and the music they find.
+            </p>
+          </div>
+
+          <div className="pt-6 space-y-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              Instagram / community
+            </h2>
+
+            <p>
+              Songs, recommendations, fragments, stories, and things we're listening to.
+            </p>
+
+            <p>
+              Follow along as the collective grows.
+            </p>
+
+            <p className="pt-1">
+              <a
+                href="https://www.instagram.com/betweenssns?igsi=eGl6Ynh5bGl3NXUx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 text-white hover:text-neutral-300 transition-colors font-medium cursor-pointer"
+              >
+                @betweenssns
+              </a>
+            </p>
+          </div>
+
+
         </div>
 
         {/* Right Column Spacer */}
